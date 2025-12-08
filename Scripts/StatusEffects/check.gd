@@ -18,6 +18,7 @@ func activate():
 func on_stack_added():
 	var stun = affected_unit.add_status_effect("Stun", inflictor)
 	stun.duration = current_stacks
+	stun.get_node("DurationTimer").start()
 	
 	if current_stacks == max_stacks:
 		var damage = inflictor.get_stat("stats","max_health") * .15

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://byxdmyjlqci3i"]
+
+[ext_resource type="Script" uid="uid://b48e7l6y1vq7t" path="res://Scripts/StatusEffects/thorns.gd" id="1_jao6e"]
+
+[node name="Thorns" type="Node3D"]
+script = ExtResource("1_jao6e")
+metadata/_custom_type_script = "uid://btf307wmolrpi"
+
+[node name="DurationTimer" type="Timer" parent="."]
+
+[node name="TickTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

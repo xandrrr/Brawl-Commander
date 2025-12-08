@@ -1,7 +1,10 @@
 extends Ability
 
 func _init() -> void:
-	ability_name = "Bleed Enemy"
-	ability_type = "targetable"
-	targeting_type = "nearest_enemy"
-	enemy_status_effect_afflictions = ["Bleed"]
+	ability_name = "Bunny Hop"
+	ability_type = "dash"
+	targeting_type = "random_enemy"
+	damage = 60.0
+	duration = 0.7
+	cast_time = 0.25
+	global = true

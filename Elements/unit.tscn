@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://36byg3ku1ihf"]
+[gd_scene load_steps=27 format=3 uid="uid://36byg3ku1ihf"]
 
 [ext_resource type="Script" uid="uid://b4ilmbrnxfwsi" path="res://Scripts/unit.gd" id="1_qqoi8"]
 [ext_resource type="Script" uid="uid://b5t8tmlyx3gp" path="res://Scripts/States/unit_state_manager.gd" id="2_l1y6i"]
@@ -10,7 +10,10 @@
 [ext_resource type="Script" uid="uid://4qcmss3d4hxy" path="res://Scripts/States/casting.gd" id="8_ypjf7"]
 [ext_resource type="Script" uid="uid://b4novpmsi0558" path="res://Scripts/ability_handler.gd" id="9_ypjf7"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_2n26j"]
+[sub_resource type="BoxMesh" id="BoxMesh_ovyg8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypjf7"]
+resource_local_to_scene = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nm5tq"]
 
@@ -31,7 +34,152 @@ viewport_path = NodePath("StatusEffectsViewport")
 [sub_resource type="Theme" id="Theme_ovyg8"]
 default_font_size = 48
 
+[sub_resource type="Animation" id="Animation_bdvhc"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, -1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xei10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_prf31"]
+resource_name = "cast"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibd7t"]
+_data = {
+&"RESET": SubResource("Animation_xei10"),
+&"attack": SubResource("Animation_bdvhc"),
+&"cast": SubResource("Animation_prf31")
+}
+
+[sub_resource type="Animation" id="Animation_6715d"]
+resource_name = "heal"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iog5l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i118s"]
+resource_name = "hurt"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nf7y1"]
+_data = {
+&"RESET": SubResource("Animation_iog5l"),
+&"heal": SubResource("Animation_6715d"),
+&"hurt": SubResource("Animation_i118s")
+}
+
 [node name="Unit" type="CharacterBody3D" node_paths=PackedStringArray("state_manager", "health_bar", "unit_name_label", "status_effect_display_container")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 collision_mask = 2
 script = ExtResource("1_qqoi8")
 state_manager = NodePath("StateManager")
@@ -40,7 +188,8 @@ unit_name_label = NodePath("UnitInformationViewport/UnitNameLabel")
 status_effect_display_container = NodePath("StatusEffectsViewport/StatusEffectNameContainer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_2n26j")
+mesh = SubResource("BoxMesh_ovyg8")
+surface_material_override/0 = SubResource("StandardMaterial3D_ypjf7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_nm5tq")
@@ -165,6 +314,16 @@ theme = SubResource("Theme_ovyg8")
 alignment = 1
 
 [node name="StatusEffectHolder" type="Node3D" parent="."]
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ibd7t")
+}
+
+[node name="FeedbackAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nf7y1")
+}
 
 [connection signal="ability_cast_finished" from="." to="StateManager" method="_on_unit_ability_cast_finished"]
 [connection signal="ability_cast_started" from="." to="StateManager" method="_on_unit_ability_cast_started"]

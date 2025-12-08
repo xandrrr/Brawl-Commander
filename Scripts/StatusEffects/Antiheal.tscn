@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dca8cvcqa7r70"]
+[gd_scene load_steps=2 format=3 uid="uid://c03auo7r8xt0g"]
 
-[ext_resource type="Script" uid="uid://dyay8iwsr7oh0" path="res://Scripts/StatusEffects/stun.gd" id="1_afupl"]
+[ext_resource type="Script" uid="uid://bn58ghugglo1u" path="res://Scripts/StatusEffects/antiheal.gd" id="1_tdj8p"]
 
-[node name="Stun" type="Node3D"]
-script = ExtResource("1_afupl")
+[node name="Antiheal" type="Node3D"]
+script = ExtResource("1_tdj8p")
 metadata/_custom_type_script = "uid://btf307wmolrpi"
 
 [node name="DurationTimer" type="Timer" parent="."]

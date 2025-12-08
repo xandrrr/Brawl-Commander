@@ -1,11 +1,14 @@
 extends Ability
 
 func _init() -> void:
-	ability_name = "Fireball"
-	ability_type = "projectile"
+	ability_name = "Needlework"
+	ability_type = "area_attack"
+	ability_shape = "cylinder"
+	targeting_type = "self"
+	duration = 0.1
 	damage = 35.0
-	speed = 5.0
-	cast_time = 1.5
+	cast_time = 2.0
+	enemy_status_effect_afflictions = ["Disarmed"]
 	targets_enemies = true
 	targets_allies = false
-	size = Vector3(.35,.35,.35)
+	size = Vector3(5,.35, 5)

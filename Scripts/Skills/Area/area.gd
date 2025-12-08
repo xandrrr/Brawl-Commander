@@ -12,12 +12,10 @@ var can_hit_enemies : bool
 var enemy_status_afflictions : Array = []
 var can_hit_allies : bool
 var ally_status_afflictions : Array = []
+var self_status_afflictions : Array = []
 
 var target : Unit
 var units_in_range : Array = []
-
-func _ready() -> void:
-	self.global_position = target.global_position
 
 
 func _process(delta: float) -> void:
@@ -26,13 +24,20 @@ func _process(delta: float) -> void:
 		queue_free()
 
 
+func activate():
+	self.global_position = target.global_position
+	for status_effect in self_status_afflictions:
+		caster.add_status_effect(status_effect, caster)
+
+
 func _on_tick_timer_timeout() -> void:
 	pulse()
 
 
 func start_tick_timer():
-	$TickTimer.wait_time = tick_time
-	$TickTimer.start()
+	if tick_time > 0.0:
+		$TickTimer.wait_time = tick_time
+		$TickTimer.start()
 
 
 func pulse():

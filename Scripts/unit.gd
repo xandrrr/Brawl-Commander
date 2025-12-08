@@ -10,6 +10,7 @@ var ability_is_global : bool
 var units_in_attack_range : Array = []
 var attack_on_cooldown : bool = false
 var ability_on_cooldown : bool = false
+var unit_is_defeated : bool = false
 @export var status_effects : Dictionary
 @export var state_manager : StateManager
 @export var health_bar : ProgressBar
@@ -31,6 +32,9 @@ func can_attack():
 	if attack_on_cooldown:
 		return false
 	
+	if unit_is_defeated:
+		return false
+	
 	for effect in status_effects:
 		if (status_effects[effect].blocks_attack == true):
 			return false
@@ -39,6 +43,9 @@ func can_attack():
 
 
 func can_update_target():
+	if unit_is_defeated:
+		return false
+	
 	for effect in status_effects:
 		if (status_effects[effect].blocks_target_update == true):
 			return false
@@ -128,19 +135,22 @@ func heal(amount : float):
 	
 	if can_heal:
 		current_health += amount
+		$FeedbackAnimationPlayer.play("heal")
 		current_health = min(current_health, get_stat("stats","max_health"))
 		update_health_bar()
 
 
 func take_damage(amount : float, attacker : Unit):
-	current_health -= amount
-	
-	for effect in status_effects:
-		status_effects[effect].on_unit_damaged(amount, attacker)
-	
-	if current_health <= 0.0:
-		defeated.emit(attacker)
-	update_health_bar()
+	if !unit_is_defeated:
+		current_health -= amount
+		$FeedbackAnimationPlayer.play("hurt")
+		
+		for effect in status_effects:
+			status_effects[effect].on_unit_damaged(amount, attacker)
+		
+		if current_health <= 0.0:
+			defeated.emit(attacker)
+		update_health_bar()
 
 
 func activate():
@@ -151,17 +161,20 @@ func activate():
 
 #functions to update target
 func update_target(unit : Unit):
-	current_target = unit
+	if can_update_target():
+		current_target = unit
 
 
 func update_target_to_closest_enemy():
-	current_target = get_closest_enemy_unit()
+	if can_update_target():
+		current_target = get_closest_enemy_unit()
 
 #getting nearby units of various types
 func get_closest_unit():
 	var closest_target : Unit = null
 	var closest_target_distance : float = 0.0
-	for unit in get_tree().get_nodes_in_group("Units"):
+	var battle = get_tree().get_first_node_in_group("Battle")
+	for unit in battle.active_units_in_battle:
 		if (unit != self):
 				var distance : float = unit.global_position.distance_to(self.global_position)
 				if (distance < closest_target_distance) or (closest_target == null):
@@ -174,7 +187,8 @@ func get_closest_unit():
 func get_closest_enemy_unit():
 	var closest_target : Unit = null
 	var closest_target_distance : float = 0.0
-	for unit in get_tree().get_nodes_in_group("Units"):
+	var battle = get_tree().get_first_node_in_group("Battle")
+	for unit in battle.active_units_in_battle:
 		if (unit.team != team)  and (unit != self):
 				var distance : float = unit.global_position.distance_to(self.global_position)
 				if (distance < closest_target_distance) or (closest_target == null):
@@ -184,10 +198,24 @@ func get_closest_enemy_unit():
 	return closest_target
 
 
+func get_random_enemy_unit():
+	var enemy_unit : Unit
+	var battle = get_tree().get_first_node_in_group("Battle")
+	var units_in_battle = battle.active_units_in_battle
+	while (!enemy_unit):
+		var random_int = randi_range(0,units_in_battle.size())
+		var random_unit = units_in_battle[random_int]
+		if random_unit.team != team:
+			enemy_unit = random_unit
+			break
+	return enemy_unit
+
+
 func get_closest_ally_unit():
 	var closest_target : Unit = null
 	var closest_target_distance : float = 0.0
-	for unit in get_tree().get_nodes_in_group("Units"):
+	var battle = get_tree().get_first_node_in_group("Battle")
+	for unit in battle.active_units_in_battle:
 		if (unit.team == team)  and (unit != self):
 				var distance : float = unit.global_position.distance_to(self.global_position)
 				if (distance < closest_target_distance) or (closest_target == null):
@@ -253,6 +281,9 @@ func can_cast():
 		return false
 	
 	if (units_in_attack_range.size() == 0) and !ability.global:
+		return false
+	
+	if unit_is_defeated:
 		return false
 	
 	for effect in status_effects:

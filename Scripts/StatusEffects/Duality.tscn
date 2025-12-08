@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dom61ho7i8o4"]
+
+[ext_resource type="Script" uid="uid://dbw1tkv8k65jb" path="res://Scripts/StatusEffects/duality.gd" id="1_641hm"]
+
+[node name="Duality" type="Node3D"]
+script = ExtResource("1_641hm")
+metadata/_custom_type_script = "uid://btf307wmolrpi"
+
+[node name="DurationTimer" type="Timer" parent="."]
+
+[node name="TickTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

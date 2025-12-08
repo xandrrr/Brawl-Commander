@@ -1,9 +1,10 @@
 extends Ability
 
 func _init() -> void:
-	ability_name = "Cool Heal"
+	ability_name = "Update Map"
 	ability_type = "targetable"
-	targeting_type = "self"
-	heal_amount = 20.0
-	cast_time = 0.5
+	targeting_type = "nearest_enemy"
+	enemy_status_effect_afflictions = ["Charted"]
+	damage = 40.0
+	cast_time = 1.5
 	global = false

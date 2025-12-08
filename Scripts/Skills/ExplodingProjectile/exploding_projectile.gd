@@ -9,6 +9,7 @@ var tick_time : float
 var duration : float
 var radius : float
 
+
 var can_hit_enemies : bool
 var enemy_status_afflictions : Array = []
 var can_hit_allies : bool

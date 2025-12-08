@@ -54,6 +54,7 @@ func create_area_attack(unit : Unit, ability : Ability):
 	area_scene.can_hit_allies = ability.targets_allies
 	area_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
 	area_scene.ally_status_afflictions = ability.ally_status_effect_afflictions
+	area_scene.self_status_afflictions = ability.self_status_effect_afflictions
 	
 	#create collision shape and mesh, depending on the desired shape of the area
 	var collision_shape = CollisionShape3D.new()
@@ -104,6 +105,8 @@ func create_dash(unit : Unit, ability : Ability):
 	match ability.targeting_type:
 		"nearest_enemy":
 			dash_scene.target = unit.get_closest_enemy_unit()
+		"random_enemy":
+			dash_scene.target = unit.get_random_enemy_unit()
 		"nearest_ally":
 			dash_scene.target = unit.get_closest_ally_unit()
 		"any_other_unit":

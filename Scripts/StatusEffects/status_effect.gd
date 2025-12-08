@@ -76,12 +76,12 @@ func cleanse():
 	for stat in modified_stats:
 		affected_unit.modify_stat("stats", stat, -modified_stats[stat])
 	
-	on_removed()
 	finished.emit()
 	queue_free()
 
 
 func _on_duration_timer_timeout() -> void:
+	on_removed()
 	cleanse()
 
 

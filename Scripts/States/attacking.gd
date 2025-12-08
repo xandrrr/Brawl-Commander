@@ -25,6 +25,7 @@ func attack_target():
 		current_unit.attack_on_cooldown = true
 		attack_timer.wait_time = (1 / current_unit.get_stat("stats", "attack_speed"))
 		attack_timer.start()
+		current_unit.get_node("AttackAnimationPlayer").play("attack")
 		
 		target.take_damage(damage_amount, current_unit)
 		

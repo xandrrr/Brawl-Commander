@@ -1,9 +1,10 @@
 extends StatusEffect
 
 func activate():
-	status_name = "Stun"
+	status_name = "Stunned"
 	max_stacks = 1
 	current_stacks = 1
+	duration = 1.0
 	refresh_on_stack_added = true
 	is_indefinite = false
 	blocks_attack = true
@@ -14,6 +15,7 @@ func activate():
 	$DurationTimer.start()
 
 func on_added():
+	#nullify movement speed momentarily
 	var old_movement_speed = affected_unit.get_stat("stats", "movement_speed")
 	var new_movement_speed = 0.0
 	var movement_speed_difference = new_movement_speed - old_movement_speed

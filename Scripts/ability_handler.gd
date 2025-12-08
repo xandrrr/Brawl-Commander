@@ -32,7 +32,7 @@ func cast_ability(unit, ability):
 		"area_attack":
 			var area = SkillMaker.create_area_attack(unit, ability)
 			skills_container.add_child(area)
-			area.pulse()
+			area.activate()
 			area.start_tick_timer()
 		"dash":
 			var dash = SkillMaker.create_dash(unit, ability)

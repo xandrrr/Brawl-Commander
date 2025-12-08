@@ -12,3 +12,8 @@ func activate():
 	
 	$DurationTimer.wait_time = duration
 	$DurationTimer.start()
+
+
+func on_added():
+	if !inflictor.unit_is_defeated:
+		affected_unit.update_target(inflictor)
