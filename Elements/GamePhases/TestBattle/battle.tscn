@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bae0ewprfco7c"]
+
+[ext_resource type="Script" uid="uid://bowfsjnlnsfpl" path="res://Scripts/battle.gd" id="1_lyq4y"]
+[ext_resource type="Script" uid="uid://jsxd2a5y1s7j" path="res://Scripts/unit_manager.gd" id="2_eq7rm"]
+[ext_resource type="Material" uid="uid://b0a8veg8777so" path="res://Assets/Resources/ground_material.tres" id="3_aeal7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tf04k"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2djil"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ij3h8"]
+
+[node name="Battle" type="Node3D" node_paths=PackedStringArray("unit_manager", "SpawnHolder")]
+script = ExtResource("1_lyq4y")
+unit_manager = NodePath("UnitManager")
+SpawnHolder = NodePath("SpawnHolder")
+
+[node name="UnitManager" type="Node3D" parent="."]
+script = ExtResource("2_eq7rm")
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(60, 0, 0, 0, 0.514, 0, 0, 0, 60, 0, 0, 0)
+material_override = ExtResource("3_aeal7")
+mesh = SubResource("CylinderMesh_tf04k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("CylinderShape3D_2djil")
+
+[node name="SpawnHolder" type="Node3D" parent="."]
+
+[node name="SpawnCenter" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73658, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnCenter"]
+shape = SubResource("SphereShape3D_ij3h8")
+
+[node name="Skills" type="Node3D" parent="."]
+
+[connection signal="unit_added" from="UnitManager" to="." method="_on_unit_manager_unit_added"]
+[connection signal="unit_died" from="UnitManager" to="." method="_on_unit_manager_unit_died"]

@@ -1,0 +1,178 @@
+[gd_scene load_steps=18 format=3 uid="uid://36byg3ku1ihf"]
+
+[ext_resource type="Script" uid="uid://b4ilmbrnxfwsi" path="res://Scripts/unit.gd" id="1_qqoi8"]
+[ext_resource type="Script" uid="uid://b5t8tmlyx3gp" path="res://Scripts/States/unit_state_manager.gd" id="2_l1y6i"]
+[ext_resource type="Script" uid="uid://cxuytpw4q0sb5" path="res://Scripts/States/idle.gd" id="3_81pgi"]
+[ext_resource type="Script" uid="uid://dirx0hmtkm6m2" path="res://Scripts/States/find_enemy.gd" id="4_81pgi"]
+[ext_resource type="Script" uid="uid://btqcvbhecbk06" path="res://Scripts/States/attacking.gd" id="5_ej8ug"]
+[ext_resource type="Script" uid="uid://bd85ls25dv5dd" path="res://Elements/defeated.gd" id="6_m3l7n"]
+[ext_resource type="Script" uid="uid://d2m86il1bbdjj" path="res://Scripts/States/cooldown.gd" id="7_7v1se"]
+[ext_resource type="Script" uid="uid://4qcmss3d4hxy" path="res://Scripts/States/casting.gd" id="8_ypjf7"]
+[ext_resource type="Script" uid="uid://b4novpmsi0558" path="res://Scripts/ability_handler.gd" id="9_ypjf7"]
+[ext_resource type="PackedScene" uid="uid://bw4fquaypq4gx" path="res://Scripts/StatusEffects/status_effect.tscn" id="10_ypjf7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_2n26j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nm5tq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l1y6i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej8ug"]
+bg_color = Color(0.65792, 0.0893662, 0.119554, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3l7n"]
+bg_color = Color(0, 0.635294, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e624q"]
+viewport_path = NodePath("UnitInformationViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ypjf7"]
+viewport_path = NodePath("StatusEffectsViewport")
+
+[node name="Unit" type="CharacterBody3D" node_paths=PackedStringArray("state_manager", "health_bar", "unit_name_label", "status_effect_display_container")]
+collision_mask = 2
+script = ExtResource("1_qqoi8")
+state_manager = NodePath("StateManager")
+health_bar = NodePath("UnitInformationViewport/HealthBar")
+unit_name_label = NodePath("UnitInformationViewport/UnitNameLabel")
+status_effect_display_container = NodePath("StatusEffectsViewport/StatusEffectNameContainer")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_2n26j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nm5tq")
+
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_l1y6i")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://cy8gm710fej5u"
+
+[node name="Idle" type="Node" parent="StateManager"]
+script = ExtResource("3_81pgi")
+metadata/_custom_type_script = "uid://becr1u8eyy4l0"
+
+[node name="FindEnemy" type="Node" parent="StateManager"]
+script = ExtResource("4_81pgi")
+metadata/_custom_type_script = "uid://becr1u8eyy4l0"
+
+[node name="Attacking" type="Node" parent="StateManager"]
+script = ExtResource("5_ej8ug")
+metadata/_custom_type_script = "uid://becr1u8eyy4l0"
+
+[node name="Defeated" type="Node" parent="StateManager"]
+script = ExtResource("6_m3l7n")
+metadata/_custom_type_script = "uid://becr1u8eyy4l0"
+
+[node name="Cooldown" type="Node" parent="StateManager"]
+script = ExtResource("7_7v1se")
+metadata/_custom_type_script = "uid://becr1u8eyy4l0"
+
+[node name="Casting" type="Node" parent="StateManager"]
+script = ExtResource("8_ypjf7")
+metadata/_custom_type_script = "uid://becr1u8eyy4l0"
+
+[node name="AttackRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("SphereShape3D_l1y6i")
+
+[node name="TargetSearchTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="UnitInformationViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="HealthBar" type="ProgressBar" parent="UnitInformationViewport"]
+custom_minimum_size = Vector2(400, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -13.5
+offset_right = 2.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_ej8ug")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m3l7n")
+value = 50.0
+
+[node name="UnitNameLabel" type="Label" parent="UnitInformationViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -106.0
+offset_right = 118.5
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "UnitName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnitVitalsSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_e624q")
+
+[node name="AbilityHandler" type="Node3D" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("9_ypjf7")
+unit = NodePath("..")
+
+[node name="AbilityCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AbilityCastTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StatusEffectsSprite" type="Sprite3D" parent="."]
+offset = Vector2(0, 300)
+billboard = 1
+texture = SubResource("ViewportTexture_ypjf7")
+
+[node name="StatusEffectsViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(512, 256)
+
+[node name="StatusEffectNameContainer" type="VBoxContainer" parent="StatusEffectsViewport"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -209.0
+offset_right = 158.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="StatusEffectHolder" type="Node3D" parent="."]
+
+[node name="StatusEffect" parent="StatusEffectHolder" instance=ExtResource("10_ypjf7")]
+
+[connection signal="ability_cast_finished" from="." to="StateManager" method="_on_unit_ability_cast_finished"]
+[connection signal="ability_cast_started" from="." to="StateManager" method="_on_unit_ability_cast_started"]
+[connection signal="activated" from="." to="StateManager" method="_on_unit_activated"]
+[connection signal="defeated" from="." to="StateManager" method="_on_unit_defeated"]
+[connection signal="enemy_in_attack_range" from="." to="StateManager" method="_on_unit_enemy_in_attack_range"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="TargetSearchTimer" to="." method="_on_target_search_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="AbilityCooldownTimer" to="." method="_on_ability_cooldown_timer_timeout"]
+[connection signal="timeout" from="AbilityCastTimer" to="." method="_on_ability_cast_timer_timeout"]

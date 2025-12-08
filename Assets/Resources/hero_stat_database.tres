@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="HeroStatDatabase" load_steps=2 format=3 uid="uid://dho6fp576eilt"]
+
+[ext_resource type="Script" uid="uid://bv8a6f467bef0" path="res://Scripts/hero_stat_database.gd" id="1_gkb0q"]
+
+[resource]
+script = ExtResource("1_gkb0q")

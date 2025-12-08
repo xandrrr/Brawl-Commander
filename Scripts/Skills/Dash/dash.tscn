@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dts2jh265hjb0"]
+
+[ext_resource type="Script" uid="uid://dhrqrmwtv5mt7" path="res://Scripts/Skills/Dash/dash.gd" id="1_bmsjn"]
+
+[node name="Dash" type="Node3D"]
+script = ExtResource("1_bmsjn")

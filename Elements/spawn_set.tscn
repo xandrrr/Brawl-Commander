@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://d38bm07404kkq"]
+
+[ext_resource type="Script" uid="uid://dqxdca4ousp2m" path="res://Scripts/spawn_set.gd" id="1_4c6ia"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eckex"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4c6ia"]
+
+[node name="SpawnSet" type="Node3D"]
+script = ExtResource("1_4c6ia")
+
+[node name="Spawn0" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawn0"]
+shape = SubResource("BoxShape3D_eckex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawn0"]
+mesh = SubResource("BoxMesh_4c6ia")
+
+[node name="Spawn1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawn1"]
+shape = SubResource("BoxShape3D_eckex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawn1"]
+mesh = SubResource("BoxMesh_4c6ia")
+
+[node name="Spawn2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawn2"]
+shape = SubResource("BoxShape3D_eckex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawn2"]
+mesh = SubResource("BoxMesh_4c6ia")
+
+[node name="Spawn3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawn3"]
+shape = SubResource("BoxShape3D_eckex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawn3"]
+mesh = SubResource("BoxMesh_4c6ia")

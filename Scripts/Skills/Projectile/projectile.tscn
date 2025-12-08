@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c078g1mnuvfs8"]
+
+[ext_resource type="Script" uid="uid://ck4dx02bc4qhc" path="res://Scripts/Skills/Projectile/projectile.gd" id="1_7ge0b"]
+
+[node name="Projectile" type="Area3D"]
+script = ExtResource("1_7ge0b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

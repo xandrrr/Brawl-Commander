@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://x8mp112hkh8p"]
+
+[ext_resource type="Script" uid="uid://bjvqvsthoj7l8" path="res://Scripts/game_phase.gd" id="1_ayo11"]
+
+[node name="GamePhase" type="Node3D"]
+script = ExtResource("1_ayo11")
