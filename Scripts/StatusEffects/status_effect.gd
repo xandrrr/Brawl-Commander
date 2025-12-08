@@ -16,6 +16,7 @@ var healing : float
 var blocks_attack : bool
 var blocks_cast : bool
 var blocks_target_update : bool
+var blocks_heal : bool
 
 var modified_stats : Dictionary
 

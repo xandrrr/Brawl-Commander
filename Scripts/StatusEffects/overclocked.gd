@@ -1,35 +1,32 @@
 extends StatusEffect
 
 func activate():
-	status_name = "Charted"
+	status_name = "Overclocked"
 	max_stacks = 1
 	current_stacks = 1
 	refresh_on_stack_added = true
-	duration = 6.0
+	duration = 10.0
 	is_indefinite = false
 	blocks_attack = false
 	blocks_cast = false
-	blocks_target_update = false
+	blocks_target_update = true
 	
 	$DurationTimer.wait_time = duration
 	$DurationTimer.start()
-	
-	$TickTimer.wait_time = tick_timer
-	$TickTimer.start()
 
 
 func on_added():
 	var old_attack_damage = affected_unit.get_stat("stats", "attack_damage")
-	var old_ability_power = affected_unit.get_stat("stats", "ability_power")
+	var old_attack_speed = affected_unit.get_stat("stats", "attack_speed")
 	
-	var new_attack_damage = old_attack_damage * .8
-	var new_ability_power = old_ability_power * .8
+	var new_attack_damage = old_attack_damage * 1.25
+	var new_attack_speed = old_attack_speed * 1.25
 	
 	var attack_damage_difference = new_attack_damage - old_attack_damage
-	var ability_power_difference = new_ability_power - old_ability_power
+	var attack_speed_difference = new_attack_speed - old_attack_speed
 	
 	affected_unit.modify_stat("stats","attack_damage",attack_damage_difference)
-	affected_unit.modify_stat("stats","ability_power",ability_power_difference)
+	affected_unit.modify_stat("stats","attack_speed",attack_speed_difference)
 	
 	modified_stats["attack_damage"] = attack_damage_difference
-	modified_stats["ability_power"] = ability_power_difference
+	modified_stats["attack_speed"] = attack_speed_difference

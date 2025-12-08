@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwdkyckbyw4rk"]
+
+[ext_resource type="Script" uid="uid://d0alwc3gggyrh" path="res://Scripts/StatusEffects/regeneration.gd" id="1_bgj4r"]
+
+[node name="Regeneration" type="Node3D"]
+script = ExtResource("1_bgj4r")
+metadata/_custom_type_script = "uid://btf307wmolrpi"
+
+[node name="DurationTimer" type="Timer" parent="."]
+
+[node name="TickTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

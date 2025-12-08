@@ -17,6 +17,7 @@ var ability_on_cooldown : bool = false
 @export var status_effect_display_container : VBoxContainer
 
 signal activated
+signal feared
 signal enemy_in_attack_range
 signal ability_cast_started
 signal ability_cast_finished
@@ -118,9 +119,17 @@ func modify_stat(stat_category : String, stat_name : String, amount : float):
 
 #functions to heal and take damage
 func heal(amount : float):
-	current_health += amount
-	current_health = min(current_health, get_stat("stats","max_health"))
-	update_health_bar()
+	var can_heal : bool = true
+	
+	for effect in status_effects:
+		if status_effects[effect].blocks_heal:
+			can_heal = false
+			break
+	
+	if can_heal:
+		current_health += amount
+		current_health = min(current_health, get_stat("stats","max_health"))
+		update_health_bar()
 
 
 func take_damage(amount : float, attacker : Unit):

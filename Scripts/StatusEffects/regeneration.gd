@@ -1,17 +1,17 @@
 extends StatusEffect
 
 func activate():
-	status_name = "Bleed"
-	max_stacks = 5
+	status_name = "Regeneration"
+	max_stacks = 3
 	current_stacks = 1
 	refresh_on_stack_added = true
-	duration = 5
 	is_indefinite = false
 	blocks_attack = false
 	blocks_cast = false
 	blocks_target_update = false
-	tick_timer = 0.5
-	damage = affected_unit.get_stat("stats","max_health") * 0.01
+	tick_timer = 1.0
+	
+	healing = inflictor.get_stat("stats","ability_power") * .2
 	
 	$DurationTimer.wait_time = duration
 	$DurationTimer.start()
@@ -21,5 +21,4 @@ func activate():
 
 
 func pulse():
-	var total_damage = damage * current_stacks
-	affected_unit.take_damage(total_damage, inflictor)
+	affected_unit.heal(healing)

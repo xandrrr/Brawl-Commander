@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceig535jq0h4i"]
+
+[ext_resource type="Script" uid="uid://bk4a3e1lipjmv" path="res://Scripts/StatusEffects/overclocked.gd" id="1_w4p3q"]
+
+[node name="Overclocked" type="Node3D"]
+script = ExtResource("1_w4p3q")
+metadata/_custom_type_script = "uid://btf307wmolrpi"
+
+[node name="DurationTimer" type="Timer" parent="."]
+
+[node name="TickTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

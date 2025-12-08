@@ -20,8 +20,13 @@ func attack_target():
 	var target : Unit = current_unit.current_target
 	if target and target.current_health > 0.0:
 		var damage_amount = current_unit.get_stat("stats","attack_damage")
+		var attack_timer = current_unit.get_node("AttackTimer")
+		
 		current_unit.attack_on_cooldown = true
-		current_unit.get_node("AttackTimer").start()
+		attack_timer.wait_time = (1 / current_unit.get_stat("stats", "attack_speed"))
+		attack_timer.start()
+		
 		target.take_damage(damage_amount, current_unit)
+		
 		for effect in current_unit.status_effects:
 			current_unit.status_effects[effect].on_hit(damage_amount, target)
