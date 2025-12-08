@@ -17,6 +17,8 @@ var blocks_attack : bool
 var blocks_cast : bool
 var blocks_target_update : bool
 
+var modified_stats : Dictionary
+
 var tick_timer : float = 999.0
 
 signal finished
@@ -25,6 +27,8 @@ signal finished
 func add_stack():
 	#don't let current_stacks exceed max_stacks
 	current_stacks = min((current_stacks + 1), max_stacks)
+	
+	on_stack_added()
 	
 	#refresh duration of status effect if refresh_on_stack_added is true
 	if refresh_on_stack_added:
@@ -68,6 +72,9 @@ func pulse():
 
 #cleanup function
 func cleanse():
+	for stat in modified_stats:
+		affected_unit.modify_stat("stats", stat, -modified_stats[stat])
+	
 	on_removed()
 	finished.emit()
 	queue_free()
