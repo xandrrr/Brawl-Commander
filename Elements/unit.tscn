@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://d2m86il1bbdjj" path="res://Scripts/States/cooldown.gd" id="7_7v1se"]
 [ext_resource type="Script" uid="uid://4qcmss3d4hxy" path="res://Scripts/States/casting.gd" id="8_ypjf7"]
 [ext_resource type="Script" uid="uid://b4novpmsi0558" path="res://Scripts/ability_handler.gd" id="9_ypjf7"]
-[ext_resource type="PackedScene" uid="uid://bw4fquaypq4gx" path="res://Scripts/StatusEffects/status_effect.tscn" id="10_ypjf7"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_2n26j"]
 
@@ -28,6 +27,9 @@ viewport_path = NodePath("UnitInformationViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ypjf7"]
 viewport_path = NodePath("StatusEffectsViewport")
+
+[sub_resource type="Theme" id="Theme_ovyg8"]
+default_font_size = 48
 
 [node name="Unit" type="CharacterBody3D" node_paths=PackedStringArray("state_manager", "health_bar", "unit_name_label", "status_effect_display_container")]
 collision_mask = 2
@@ -159,11 +161,10 @@ offset_top = -209.0
 offset_right = 158.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_ovyg8")
 alignment = 1
 
 [node name="StatusEffectHolder" type="Node3D" parent="."]
-
-[node name="StatusEffect" parent="StatusEffectHolder" instance=ExtResource("10_ypjf7")]
 
 [connection signal="ability_cast_finished" from="." to="StateManager" method="_on_unit_ability_cast_finished"]
 [connection signal="ability_cast_started" from="." to="StateManager" method="_on_unit_ability_cast_started"]

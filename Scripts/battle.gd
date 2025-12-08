@@ -75,6 +75,11 @@ func _on_unit_manager_unit_died(unit: Unit) -> void:
 	defeated_units.append(unit)
 	active_units_in_battle.erase(unit)
 	unit_manager.remove_unit_from_attack_ranges(active_units_in_battle, unit)
+	var active_skills = $Skills.get_children()
+	for skill in active_skills:
+		if skill.caster == unit:
+			skill.queue_free()
+	
 	check_for_winner()
 
 

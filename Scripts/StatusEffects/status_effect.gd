@@ -16,16 +16,15 @@ var healing : float
 var blocks_attack : bool
 var blocks_cast : bool
 var blocks_target_update : bool
-var hi : String
 
 var tick_timer : float = 999.0
 
 signal finished
 
 
-func add_stacks(num_stacks : int):
+func add_stack():
 	#don't let current_stacks exceed max_stacks
-	current_stacks = min((current_stacks + num_stacks), max_stacks)
+	current_stacks = min((current_stacks + 1), max_stacks)
 	
 	#refresh duration of status effect if refresh_on_stack_added is true
 	if refresh_on_stack_added:
@@ -33,11 +32,8 @@ func add_stacks(num_stacks : int):
 
 
 func activate():
-	$DurationTimer.wait_time = duration
-	$DurationTimer.start()
-	
-	$TickTimer.wait_time = tick_timer
-	$TickTimer.start()
+	pass
+
 
 func remove_stacks(num_stacks : int):
 	current_stacks -= num_stacks
@@ -53,11 +49,11 @@ func on_stack_added():
 	pass
 
 
-func on_hit(damage : float):
+func on_hit(damage : float, target : Unit):
 	pass
 
 
-func on_unit_damaged(damage : float):
+func on_unit_damaged(damage : float, attacker : Unit):
 	pass
 
 
@@ -66,6 +62,7 @@ func on_removed():
 
 
 func pulse():
+	print("pulse: ", status_name)
 	pass
 
 

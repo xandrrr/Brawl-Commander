@@ -27,7 +27,7 @@ var hero_stat_dictionary = {
 		"stats" : {
 			"attack_damage" : 10.0,
 			"attack_speed" : 1.0,
-			"max_health" : 100.0,
+			"max_health" : 1000.0,
 			"movement_speed" : 200.0,
 			"ability_power" : 10.0,
 			"ability_cooldown" : 10.0
@@ -49,7 +49,7 @@ var hero_stat_dictionary = {
 		"stats" : {
 			"attack_damage" : 10.0,
 			"attack_speed" : 1.0,
-			"max_health" : 100.0,
+			"max_health" : 1000.0,
 			"movement_speed" : 200.0,
 			"ability_power" : 10.0,
 			"ability_cooldown" : 10.0
@@ -71,7 +71,7 @@ var hero_stat_dictionary = {
 		"stats" : {
 			"attack_damage" : 10.0,
 			"attack_speed" : 1.0,
-			"max_health" : 100.0,
+			"max_health" : 1000.0,
 			"movement_speed" : 200.0,
 			"ability_power" : 10.0,
 			"ability_cooldown" : 10.0
@@ -93,7 +93,7 @@ var hero_stat_dictionary = {
 		"stats" : {
 			"attack_damage" : 10.0,
 			"attack_speed" : 1.0,
-			"max_health" : 100.0,
+			"max_health" : 1000.0,
 			"movement_speed" : 200.0,
 			"ability_power" : 10.0,
 			"ability_cooldown" : 10.0
@@ -115,7 +115,7 @@ var hero_stat_dictionary = {
 		"stats" : {
 			"attack_damage" : 10.0,
 			"attack_speed" : 1.0,
-			"max_health" : 100.0,
+			"max_health" : 1000.0,
 			"movement_speed" : 200.0,
 			"ability_power" : 10.0,
 			"ability_cooldown" : 10.0
@@ -137,7 +137,7 @@ var hero_stat_dictionary = {
 		"stats" : {
 			"attack_damage" : 10.0,
 			"attack_speed" : 1.0,
-			"max_health" : 100.0,
+			"max_health" : 1000.0,
 			"movement_speed" : 200.0,
 			"ability_power" : 10.0,
 			"ability_cooldown" : 10.0
@@ -159,7 +159,7 @@ var hero_stat_dictionary = {
 		"stats" : {
 			"attack_damage" : 10.0,
 			"attack_speed" : 1.0,
-			"max_health" : 100.0,
+			"max_health" : 1000.0,
 			"movement_speed" : 200.0,
 			"ability_power" : 10.0,
 			"ability_cooldown" : 10.0
@@ -181,7 +181,7 @@ var hero_stat_dictionary = {
 		"stats" : {
 			"attack_damage" : 10.0,
 			"attack_speed" : 1.0,
-			"max_health" : 100.0,
+			"max_health" : 1000.0,
 			"movement_speed" : 200.0,
 			"ability_power" : 10.0,
 			"ability_cooldown" : 10.0

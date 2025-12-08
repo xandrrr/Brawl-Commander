@@ -10,7 +10,7 @@ var ability_is_global : bool
 var units_in_attack_range : Array = []
 var attack_on_cooldown : bool = false
 var ability_on_cooldown : bool = false
-var status_effects : Array = []
+@export var status_effects : Dictionary
 @export var state_manager : StateManager
 @export var health_bar : ProgressBar
 @export var unit_name_label : Label
@@ -31,7 +31,7 @@ func can_attack():
 		return false
 	
 	for effect in status_effects:
-		if (effect.blocks_attack == true):
+		if (status_effects[effect].blocks_attack == true):
 			return false
 	
 	return true
@@ -39,25 +39,43 @@ func can_attack():
 
 func can_update_target():
 	for effect in status_effects:
-		if (effect.blocks_target_update == true):
+		if (status_effects[effect].blocks_target_update == true):
 			return false
 	
 	return true
 
 
-func add_status_effect(status_effect_name : String, num_stacks : int):
+func add_status_effect(status_effect_name : String, inflictor : Unit):
 	var status_effect = look_up_status_effect(status_effect_name)
+	
 	var status_effect_already_inflicted : bool = false
 	if status_effect:
 		for effect in status_effects:
-			if effect.status_name == status_effect.status_name:
+			if effect == status_effect_name:
 				status_effect_already_inflicted = true
-				effect.add_stacks(num_stacks)
+				status_effects[effect].add_stack()
+				break
 	
 	if !status_effect_already_inflicted:
+		#create the status effect
 		var status_effect_scene = status_effect.instantiate()
-		get_node("StatusEffectHolder").add_child(status_effect_scene)
-		status_effects.append(status_effect_scene)
+		status_effect_scene.status_name = status_effect_name
+		status_effect_scene.inflictor = inflictor
+		status_effect_scene.affected_unit = self
+		
+		#add status effect to containers
+		$StatusEffectHolder.add_child(status_effect_scene)
+		status_effects[status_effect_scene.status_name] = status_effect_scene
+		add_status_effect_label(status_effect_name)
+		
+		#connect status effect timer to cleanup
+		status_effect_scene.get_node("DurationTimer").timeout.connect(func(): 
+			status_effects.erase(status_effect_scene.status_name)
+			remove_status_effect_label(status_effect_name)
+		)
+		
+		#activate status effect
+		status_effect_scene.activate()
 
 
 func look_up_status_effect(status_effect_name : String):
@@ -66,6 +84,21 @@ func look_up_status_effect(status_effect_name : String):
 		var status_effect = load(status_effect_path)
 		return status_effect
 
+
+func add_status_effect_label(status_effect_name : String):
+	var new_label = Label.new()
+	$StatusEffectsViewport/StatusEffectNameContainer.add_child(new_label)
+	new_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	new_label.name = status_effect_name
+	new_label.text = status_effect_name
+
+
+func remove_status_effect_label(status_effect_name : String):
+	var labels = $StatusEffectsViewport/StatusEffectNameContainer.get_children()
+	for label in labels:
+		if label.name == status_effect_name:
+			label.queue_free()
+			break
 
 #functions to handle stats
 func get_stat(stat_category : String, stat_name : String):
@@ -94,7 +127,7 @@ func take_damage(amount : float, attacker : Unit):
 	current_health -= amount
 	
 	for effect in status_effects:
-		effect.on_damaged(amount)
+		status_effects[effect].on_unit_damaged(amount, attacker)
 	
 	if current_health <= 0.0:
 		defeated.emit(attacker)
@@ -214,7 +247,7 @@ func can_cast():
 		return false
 	
 	for effect in status_effects:
-		if (effect.blocks_cast == true):
+		if (status_effects[effect].blocks_cast == true):
 			return false
 	
 	return true

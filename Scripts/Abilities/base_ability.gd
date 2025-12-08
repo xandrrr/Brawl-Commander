@@ -13,6 +13,8 @@ class_name Ability extends Resource
 @export var targets_enemies : bool
 @export var targets_allies : bool
 @export var cast_time : float = 0.5
+@export var enemy_status_effect_afflictions : Array
+@export var ally_status_effect_afflictions : Array
 @export var material_information : Dictionary
 @export var targeting_type = "nearest_enemy"
 @export var global : bool = false

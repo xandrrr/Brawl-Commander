@@ -24,4 +24,4 @@ func attack_target():
 		current_unit.get_node("AttackTimer").start()
 		target.take_damage(damage_amount, current_unit)
 		for effect in current_unit.status_effects:
-			effect.on_hit(damage_amount)
+			current_unit.status_effects[effect].on_hit(damage_amount, target)

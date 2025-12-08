@@ -1,7 +1,7 @@
-extends Resource
+extends Node
 
 var status_dictionary : Dictionary = {
-	"Bleed" : 0,
+	"Bleed" : "res://Scripts/StatusEffects/Bleed.tscn",
 	"Stun" : 0,
 	"Safeguard" : 0,
 	"Poison" : 0,

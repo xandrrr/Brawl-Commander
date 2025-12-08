@@ -5,7 +5,7 @@ func _init() -> void:
 	ability_type = "exploding_projectile"
 	targeting_type = "nearest_enemy"
 	speed = 2.5
-	damage = 50.0
+	damage = 5.0
 	heal_amount = 5.0
 	tick_time = 1.0
 	duration = 3.0

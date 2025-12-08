@@ -14,6 +14,8 @@ func create_projectile(unit : Unit, ability : Ability):
 	projectile_scene.heal_amount = ability.heal_amount
 	projectile_scene.can_hit_enemies = ability.targets_enemies
 	projectile_scene.can_hit_allies = ability.targets_allies
+	projectile_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
+	projectile_scene.ally_status_afflictions = ability.ally_status_effect_afflictions
 	
 	#create collision shape and mesh for the projectile
 	var collision_shape = CollisionShape3D.new()
@@ -50,6 +52,8 @@ func create_area_attack(unit : Unit, ability : Ability):
 	area_scene.duration = ability.duration
 	area_scene.can_hit_enemies = ability.targets_enemies
 	area_scene.can_hit_allies = ability.targets_allies
+	area_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
+	area_scene.ally_status_afflictions = ability.ally_status_effect_afflictions
 	
 	#create collision shape and mesh, depending on the desired shape of the area
 	var collision_shape = CollisionShape3D.new()
@@ -116,6 +120,8 @@ func create_targetable(unit : Unit, ability : Ability):
 	targetable_scene.caster = unit
 	targetable_scene.damage = ability.damage
 	targetable_scene.heal_amount = ability.heal_amount
+	targetable_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
+	targetable_scene.ally_status_afflictions = ability.ally_status_effect_afflictions
 	
 	match ability.targeting_type:
 		"nearest_enemy":
@@ -144,6 +150,8 @@ func create_exploding_projectile(unit : Unit, ability : Ability):
 	exploding_projectile_scene.radius = ability.size.x
 	exploding_projectile_scene.can_hit_enemies = ability.targets_enemies
 	exploding_projectile_scene.can_hit_allies = ability.targets_allies
+	exploding_projectile_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
+	exploding_projectile_scene.ally_status_afflictions = ability.ally_status_effect_afflictions
 	
 	#create collision shape and mesh for the projectile
 	var collision_shape = CollisionShape3D.new()
