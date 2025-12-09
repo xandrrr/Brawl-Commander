@@ -54,11 +54,11 @@ func on_stack_added():
 	pass
 
 
-func on_hit(damage : float, target : Unit):
+func on_hit(damage_dealt : float, target : Unit):
 	pass
 
 
-func on_unit_damaged(damage : float, attacker : Unit):
+func on_unit_damaged(damage_taken : float, attacker : Unit):
 	pass
 
 

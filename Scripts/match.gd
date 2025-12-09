@@ -6,22 +6,22 @@ const GAME_PHASES_PATH = "res://Elements/GamePhases/"
 var game_resource_manager : GameResourceManager
 
 var teams : Array = []
-var player_team : Team = null
+var player_team : Team
 
 var current_phase_number : int = 0
-var current_phase : GamePhase = null
+var current_phase : GamePhase
 var game_phase_dictionary : Dictionary
 
 var match_over : bool = false
 
-var test_teams : Array = [
+var starting_team_names : Array = [
 	"Player",
 	"Enemy",
 	"Enemy2",
 	"Enemy3"
 ]
 
-var test_selections : Dictionary = {
+var selections : Dictionary = {
 	"Player" : ["TestUnit5"],
 	"Enemy" : ["TestUnit6"],
 	"Enemy2" : ["TestUnit3"],
@@ -29,35 +29,37 @@ var test_selections : Dictionary = {
 }
 
 var test_game_phase_order : Dictionary = {
-	1 : "BattlePhase"
+	1 : "LevelHeroes",
+	2 : "BattlePhase"
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	populate_teams_for_new_game()
+	hero_manager.create_party_for_all_teams(teams)
+	
+	hero_manager.populate_new_hero_pool()
+	
+	for i in range(teams.size()):
+		for hero_name in selections[teams[i].team_name]:
+			var hero_selection = hero_manager.get_hero_by_name(hero_name)
+			hero_manager.move_hero_to_party(hero_selection, teams[i].party)
 	game_phase_dictionary = test_game_phase_order
 	play_next_game_phase()
 
 
 func populate_teams_for_new_game():
-	for team in test_teams:
+	for team in starting_team_names:
 		var new_team = load("res://Scripts/team.gd").new(team)
 		teams.append(new_team)
-		new_team.status = "In-Game"
+		if team == "Player":
+			player_team = new_team
 
 
 func get_team(team_name : String):
 	for team in teams:
 		if team.team_name == team_name:
-			return team_name
-
-
-func get_remaining_teams():
-	var remaining_teams = []
-	for team in teams:
-		if team.status == "In-Game":
-			remaining_teams.append(team)
-	
-	return remaining_teams
+			return team
 
 
 #For loading the next event
@@ -77,8 +79,21 @@ func play_next_game_phase():
 	
 	var next_game_phase = load_game_phase(game_phase_dictionary[current_phase_number])
 	next_game_phase.run()
+	next_game_phase.phase_finished.connect(func():
+		play_next_game_phase()
+	)
 
 
 func clear_map():
 	for child in get_node("Map").get_children():
 		child.queue_free()
+
+
+func check_for_winner():
+	for team in teams:
+		if team.points == 8:
+			declare_winner(team)
+
+
+func declare_winner(team : Team):
+	pass

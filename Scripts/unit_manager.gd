@@ -4,7 +4,6 @@ const BASE_UNIT = preload("res://Elements/unit.tscn")
 const HERO_DATABASE = preload("res://Assets/Resources/hero_stat_database.tres")
 const ABILITIES_PATH = "res://Scripts/Abilities/"
 
-signal winner_declared(winner : Party)
 signal unit_added(unit : Unit)
 signal unit_died(unit : Unit)
 

@@ -1,12 +1,11 @@
 extends Ability
 
 func _init() -> void:
-	ability_name = "Love Bomb"
-	ability_type = "exploding_projectile"
+	ability_name = "Flutter"
+	ability_type = "dash"
 	targeting_type = "nearest_enemy"
-	speed = 5.0
 	damage = 40.0
-	heal_amount = 20.0
-	duration = 0.1
-	cast_time = 1.0
-	global = true
+	enemy_status_effect_afflictions = ["Vulnerable"]
+	duration = 1.5
+	cast_time = 1.5
+	global = false

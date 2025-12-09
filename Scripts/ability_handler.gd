@@ -15,10 +15,10 @@ func _process(delta: float) -> void:
 
 func attempt_cast():
 	if unit.can_cast():
-		cast_ability(unit, unit.ability)
+		cast_ability(unit.ability)
 
 
-func cast_ability(unit, ability):
+func cast_ability(ability):
 	
 	unit.start_ability_cooldown(ability.cast_time)
 	unit.ability_cast_started.emit()

@@ -11,6 +11,6 @@ func activate():
 	$DurationTimer.start()
 
 
-func on_unit_damaged(damage : float, attacker : Unit):
-	var extra_damage = damage * .1 * current_stacks
+func on_unit_damaged(damage_taken : float, _attacker : Unit):
+	var extra_damage = damage_taken * .1 * current_stacks
 	affected_unit.take_damage_without_effects(extra_damage, inflictor)

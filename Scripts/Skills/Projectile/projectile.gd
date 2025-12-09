@@ -27,12 +27,13 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Units") and (body != caster):
-		if (body.team != caster.team) and can_hit_enemies:
-			on_enemy_hit(body)
-			queue_free()
-		elif (body.team == caster.team) and can_hit_allies:
-			on_ally_hit(body)
-			queue_free()
+		if !body.unit_is_defeated:
+			if (body.team != caster.team) and can_hit_enemies:
+				on_enemy_hit(body)
+				queue_free()
+			elif (body.team == caster.team) and can_hit_allies:
+				on_ally_hit(body)
+				queue_free()
 
 
 func on_enemy_hit(enemy : Unit):

@@ -13,6 +13,8 @@ func activate():
 	
 	$DurationTimer.wait_time = duration
 	$DurationTimer.start()
+	
+	on_added()
 
 
 func on_added():

@@ -14,7 +14,7 @@ func activate():
 	$DurationTimer.start()
 
 
-func on_unit_damaged(damage : float, attacker : Unit):
+func on_unit_damaged(damage_taken : float, attacker : Unit):
 	var threshold = affected_unit.get_stat("stats","max_health") * 0.3
 	if affected_unit.current_health < threshold:
-		affected_unit.heal(damage)
+		affected_unit.heal(damage_taken)

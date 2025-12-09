@@ -14,19 +14,28 @@ func create_template_for_hero(hero : Hero):
 	var current_stats = stats_box.get_node("CurrentStatsVBox")
 	var growth_stats = stats_box.get_node("GrowthVBox")
 	
+	v_box.get_node("HeroName").text = hero.hero_name
+	v_box.get_node("CurrentLevel").text = "Level " + str(hero.level)
+	
 	for stat in hero.stats.stats_dictionary["stats"]:
-		var new_label = Label.new()
-		current_stats.add_child(new_label)
+		var label = current_stats.get_node(stat)
 		
 		var base_stat_value = hero.stats.stats_dictionary["stats"][stat]
 		var base_growth = hero.stats.stats_dictionary["growth"][stat]
 		var total_stat_growth = base_growth * hero.level
 		var modified_stat_value = base_stat_value + total_stat_growth
-		new_label.name = stat
-		new_label.text += modified_stat_value
+		label.text += str(modified_stat_value)
 		
 		var growth_label = growth_stats.get_node(stat)
-		growth_label.text = "( + " + base_growth + " )"
+		growth_label.text = "( + " + str(base_growth) + " )"
+	
+	v_box.get_node("SelectButton").pressed.connect(func():
+		change_selection(hero.hero_name)
+	)
+	
+	v_box.get_node("ViewAbilityButton").pressed.connect(func():
+		display_ability(hero.hero_name)
+	)
 
 
 func create_templates_for_party(party : Party):
@@ -35,17 +44,25 @@ func create_templates_for_party(party : Party):
 
 
 func change_selection(hero_name : String):
-	selection = hero_name
-	for hero_template_name in hero_templates:
-		var v_box = hero_templates[hero_template_name].get_node("VBox")
-		var hero_name_text = v_box.get_node("HeroName")
-		if hero_template_name == hero_name:
-			hero_name_text.set("theme_override_colors/font_color", Color(0.0,1.0,0.0,1.0))
-		else:
+	if selection != hero_name:
+		selection = hero_name
+		for hero_template_name in hero_templates:
+			var v_box = hero_templates[hero_template_name].get_node("VBox")
+			var hero_name_text = v_box.get_node("HeroName")
+			if hero_template_name == hero_name:
+				hero_name_text.set("theme_override_colors/font_color", Color(0.0,1.0,0.0,1.0))
+			else:
+				hero_name_text.set("theme_override_colors/font_color", Color(1.0,1.0,1.0,1.0))
+	else:
+		selection = ""
+		for hero_template_name in hero_templates:
+			var v_box = hero_templates[hero_template_name].get_node("VBox")
+			var hero_name_text = v_box.get_node("HeroName")
 			hero_name_text.set("theme_override_colors/font_color", Color(1.0,1.0,1.0,1.0))
 
 
 func display_ability(hero_name : String):
+	#hide everything except ability description
 	$HeroesHBox.visible = false
 	$ConfirmButton.visible = false
 	$AbilityDescription.visible = true

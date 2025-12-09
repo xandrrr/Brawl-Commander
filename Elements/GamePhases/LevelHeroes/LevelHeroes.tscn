@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqejm62qkw8cn"]
+
+[ext_resource type="Script" uid="uid://c8wku4gjeqwp" path="res://Elements/GamePhases/LevelHeroes/level_heroes.gd" id="1_j0lyh"]
+
+[node name="LevelHeroes" type="Node3D"]
+script = ExtResource("1_j0lyh")
+metadata/_custom_type_script = "uid://bjvqvsthoj7l8"

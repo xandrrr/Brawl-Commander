@@ -12,5 +12,11 @@ func add_hero(hero : Hero):
 	hero.party = self
 
 
+func get_hero(hero_name : String):
+	for hero in heroes:
+		if hero.hero_name == hero_name:
+			return hero
+
+
 func remove_hero(hero : Hero):
 	heroes.erase(hero)

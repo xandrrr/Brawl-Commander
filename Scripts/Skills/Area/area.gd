@@ -52,7 +52,8 @@ func pulse():
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Units"):
-		units_in_range.append(body)
+		if !body.unit_is_defeated:
+			units_in_range.append(body)
 
 
 func _on_body_exited(body: Node3D) -> void:
