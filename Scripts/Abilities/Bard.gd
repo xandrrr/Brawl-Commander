@@ -5,6 +5,7 @@ func _init() -> void:
 	ability_type = "area_attack"
 	ability_shape = "cylinder"
 	targeting_type = "self"
+	ability_description = "Grant all nearby units the Regeneration status effect, \nhealing them over time for a portion of the Bard's Ability Power."
 	duration = 0.2
 	tick_time = 0.15
 	heal_amount = 40.0

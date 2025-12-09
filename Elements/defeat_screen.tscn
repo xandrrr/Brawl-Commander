@@ -1,18 +1,22 @@
-[gd_scene format=3 uid="uid://bobaqkwce3e67"]
+[gd_scene load_steps=3 format=3 uid="uid://bobaqkwce3e67"]
 
-[node name="VictoryScreen" type="Control"]
+[ext_resource type="Script" uid="uid://30st5jtc5c3w" path="res://Scripts/defeat_screen.gd" id="1_aupbm"]
+[ext_resource type="AudioStream" uid="uid://b635w3ufu3dny" path="res://Assets/Resources/game_over_brawl_commander.ogg" id="2_k4s0c"]
+
+[node name="DefeatScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_aupbm")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 1, 0, 0.752941)
+color = Color(0.764706, 0.419608, 0.184314, 0.752941)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -25,11 +29,14 @@ offset_right = 558.5
 offset_bottom = 229.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
-text = "Congratulations, victory is yours!
-You are the best Brawl Commander!"
+text = "Oh no! One of your opponents has claimed victory!
+They have won the title of the best
+Brawl Commander.
+
+It's time to take the title back."
 horizontal_alignment = 1
 
-[node name="ReturnToMainMenuButton" type="Button" parent="."]
+[node name="PlayAgainButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -44,3 +51,10 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "Return to Main Menu"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_k4s0c")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="PlayAgainButton" to="." method="_on_play_again_button_pressed"]

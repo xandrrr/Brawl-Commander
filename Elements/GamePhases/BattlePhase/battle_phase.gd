@@ -1,6 +1,8 @@
 extends GamePhase
 
 func run():
+	game_match.get_node("Song2").play()
+	game_match.get_node("Song3").stop()
 	var hero_manager = game_match.hero_manager
 	
 	var new_battle = load("res://Elements/GamePhases/BattlePhase/battle.tscn")

@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://r0jr1b4elw0a"]
+[gd_scene load_steps=3 format=3 uid="uid://r0jr1b4elw0a"]
+
+[ext_resource type="Script" uid="uid://c8ggi5giv660n" path="res://Scripts/victory_screen.gd" id="1_iahmj"]
+[ext_resource type="AudioStream" uid="uid://did3igtmxe2xs" path="res://Assets/Resources/brawl_commander_song_3.mp3" id="2_wxoxm"]
 
 [node name="VictoryScreen" type="Control"]
 layout_mode = 3
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_iahmj")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1920.0
@@ -43,3 +47,10 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "Click Me To Play Again!"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wxoxm")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="PlayAgainButton" to="." method="_on_play_again_button_pressed"]

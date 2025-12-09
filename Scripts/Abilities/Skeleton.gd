@@ -5,6 +5,7 @@ func _init() -> void:
 	ability_type = "area_attack"
 	ability_shape = "cylinder"
 	targeting_type = "nearest_enemy"
+	ability_description = "Deal continuous damage in an area \naround the nearest enemy."
 	duration = 5.0
 	damage = 15.0
 	tick_time = 1.0

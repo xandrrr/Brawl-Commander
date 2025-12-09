@@ -5,6 +5,7 @@ func _init() -> void:
 	ability_type = "area_attack"
 	ability_shape = "cylinder"
 	targeting_type = "self"
+	ability_description = "Disarm all nearby enemies."
 	duration = 0.15
 	tick_time = 0.1
 	damage = 35.0

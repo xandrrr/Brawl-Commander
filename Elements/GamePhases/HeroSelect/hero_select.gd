@@ -1,6 +1,8 @@
 extends GamePhase
 
 func run():
+	game_match.get_node("Song3").play()
+	
 	var hero_select_menu = load("res://Elements/GamePhases/HeroSelect/hero_select_menu.tscn")
 	var hero_select_menu_node = hero_select_menu.instantiate()
 	add_child(hero_select_menu_node)

@@ -5,7 +5,8 @@ func _init() -> void:
 	ability_type = "area_attack"
 	ability_shape = "cylinder"
 	targeting_type = "self"
-	duration = 8.0
+	ability_description = "Drop a lingering zone that does continuous damage and \napplies Silenced and Antiheal to enemies within. \nSilenced prevents units from casting their ability."
+	duration = 6.0
 	tick_time = 1.0
 	damage = 10.0
 	cast_time = 4.0

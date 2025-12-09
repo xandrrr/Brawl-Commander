@@ -10,7 +10,7 @@ func activate():
 	blocks_attack = false
 	blocks_cast = false
 	blocks_target_update = false
-	tick_timer = 0.5
+	tick_timer = 1.0
 	damage = affected_unit.get_stat("stats","max_health") * 0.01
 	
 	$DurationTimer.wait_time = duration

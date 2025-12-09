@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://buykyw8s6slqy"]
+
+[ext_resource type="Script" uid="uid://dwgbu2rw62sxf" path="res://Scripts/tutorial_screen.gd" id="1_eunp1"]
+[ext_resource type="AudioStream" uid="uid://did3igtmxe2xs" path="res://Assets/Resources/brawl_commander_song_3.mp3" id="2_b6les"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eunp1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.454902, 0, 0.564706, 0.752941)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -191.0
+offset_top = 50.0
+offset_right = 191.0
+offset_bottom = 138.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="WelcomeHeader" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Your objective is to assemble a team of heroes
+and win four rounds of combat against your
+opponents, who are trying to do the same thing."
+horizontal_alignment = 1
+
+[node name="DescriptionHeader" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "
+In between combat rounds, your heroes will
+level up and you may grant an additional level to any
+hero of your choosing.
+
+You may use WASD to pan the camera, and Q/E to zoom."
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -198.5
+offset_top = -180.0
+offset_right = 198.5
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Click to go back to the main menu!"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b6les")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

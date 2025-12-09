@@ -3,6 +3,7 @@ extends Ability
 func _init() -> void:
 	ability_name = "Bon Appétit!"
 	ability_type = "area_attack"
+	ability_description = "Deal damage to enemies around you, \napplying Poison and Antiheal."
 	ability_shape = "cylinder"
 	targeting_type = "self"
 	duration = 0.2

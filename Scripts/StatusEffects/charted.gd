@@ -16,6 +16,8 @@ func activate():
 	
 	$TickTimer.wait_time = tick_timer
 	$TickTimer.start()
+	
+	on_added()
 
 
 func on_added():

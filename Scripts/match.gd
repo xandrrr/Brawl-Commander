@@ -97,4 +97,7 @@ func check_for_winner():
 
 
 func declare_winner(team : Team):
-	pass
+	if team == player_team:
+		get_tree().change_scene_to_file("res://Elements/victory_screen.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Elements/defeat_screen.tscn")

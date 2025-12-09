@@ -11,7 +11,7 @@ func create_projectile(unit : Unit, ability : Ability):
 	projectile_scene.caster = unit
 	projectile_scene.projectile_speed = ability.speed
 	projectile_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
-	projectile_scene.heal_amount = ability.heal_amount
+	projectile_scene.heal_amount = ability.heal_amount + unit.get_stat("stats","ability_power")
 	projectile_scene.can_hit_enemies = ability.targets_enemies
 	projectile_scene.can_hit_allies = ability.targets_allies
 	projectile_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
@@ -47,7 +47,7 @@ func create_area_attack(unit : Unit, ability : Ability):
 	
 	area_scene.caster = unit
 	area_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
-	area_scene.heal_amount = ability.heal_amount
+	area_scene.heal_amount = ability.heal_amount + unit.get_stat("stats","ability_power")
 	area_scene.tick_time = ability.tick_time
 	area_scene.duration = ability.duration
 	area_scene.can_hit_enemies = ability.targets_enemies
@@ -98,7 +98,7 @@ func create_dash(unit : Unit, ability : Ability):
 	
 	dash_scene.caster = unit
 	dash_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
-	dash_scene.heal_amount = ability.heal_amount
+	dash_scene.heal_amount = ability.heal_amount + unit.get_stat("stats","ability_power")
 	dash_scene.duration = ability.duration
 	dash_scene.can_hit_enemies = ability.targets_enemies
 	dash_scene.can_hit_allies = ability.targets_allies
@@ -126,7 +126,7 @@ func create_targetable(unit : Unit, ability : Ability):
 	
 	targetable_scene.caster = unit
 	targetable_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
-	targetable_scene.heal_amount = ability.heal_amount
+	targetable_scene.heal_amount = ability.heal_amount + unit.get_stat("stats","ability_power")
 	targetable_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
 	targetable_scene.ally_status_afflictions = ability.ally_status_effect_afflictions
 	

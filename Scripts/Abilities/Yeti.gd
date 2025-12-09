@@ -5,6 +5,7 @@ func _init() -> void:
 	ability_type = "area_attack"
 	ability_shape = "cylinder"
 	targeting_type = "nearest_enemy"
+	ability_description = "Leave a lingering zone that does small continuous \ndamage and applies Silenced to enemies within."
 	duration = 8.0
 	damage = 8.0
 	tick_time = 0.5

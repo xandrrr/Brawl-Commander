@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bplt8vrvhgmxd"]
+[gd_scene load_steps=10 format=3 uid="uid://bplt8vrvhgmxd"]
 
 [ext_resource type="Script" uid="uid://dpn06gh4v5yn5" path="res://Scripts/match.gd" id="1_7y1jj"]
 [ext_resource type="Script" uid="uid://bulaedjjsj2rr" path="res://Scripts/hero_manager.gd" id="2_x8et2"]
 [ext_resource type="Script" uid="uid://cacpxtwwfc8dx" path="res://camera_holder.gd" id="3_crtjb"]
+[ext_resource type="AudioStream" uid="uid://boutak4msk0wo" path="res://Assets/Resources/brawl_commander_song_2.mp3" id="4_2n26j"]
+[ext_resource type="AudioStream" uid="uid://did3igtmxe2xs" path="res://Assets/Resources/brawl_commander_song_3.mp3" id="5_nm5tq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8et2"]
 
@@ -72,3 +74,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
 shape = SubResource("BoxShape3D_2n26j")
+
+[node name="Song2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2n26j")
+parameters/looping = true
+
+[node name="Song3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nm5tq")
+parameters/looping = true

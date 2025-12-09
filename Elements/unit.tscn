@@ -15,9 +15,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypjf7"]
 resource_local_to_scene = true
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_nm5tq"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ovyg8"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_l1y6i"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ypjf7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej8ug"]
 bg_color = Color(0.65792, 0.0893662, 0.119554, 1)
@@ -192,7 +192,7 @@ mesh = SubResource("BoxMesh_ovyg8")
 surface_material_override/0 = SubResource("StandardMaterial3D_ypjf7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_nm5tq")
+shape = SubResource("SphereShape3D_ovyg8")
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_l1y6i")
@@ -226,7 +226,7 @@ metadata/_custom_type_script = "uid://becr1u8eyy4l0"
 [node name="AttackRange" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
-shape = SubResource("SphereShape3D_l1y6i")
+shape = SubResource("SphereShape3D_ypjf7")
 
 [node name="TargetSearchTimer" type="Timer" parent="."]
 wait_time = 0.5
