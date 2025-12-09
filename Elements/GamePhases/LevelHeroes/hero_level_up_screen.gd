@@ -24,9 +24,7 @@ func create_template_for_hero(hero : Hero):
 		
 		var base_stat_value = hero.stats.stats_dictionary["stats"][stat]
 		var base_growth = hero.stats.stats_dictionary["growth"][stat]
-		var total_stat_growth = base_growth * hero.level
-		var modified_stat_value = base_stat_value + total_stat_growth
-		label.text += str(modified_stat_value)
+		label.text += str(base_stat_value)
 		
 		var growth_label = growth_stats.get_node(stat)
 		growth_label.text = "( + " + str(base_growth) + " )"

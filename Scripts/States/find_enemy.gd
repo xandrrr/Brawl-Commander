@@ -17,7 +17,5 @@ func enter(previous_state_path: String, data := {}) -> void:
 	if current_unit.units_in_attack_range.size() == 0:
 		var closest_enemy = current_unit.get_closest_enemy_unit()
 		current_unit.update_target(closest_enemy)
-		
-		current_unit.get_node("AttackRange").scale = Vector3(1,1,1) * current_unit.get_stat("config", "attack_range")
 	else:
 		self.finished.emit("Attacking", {"unit" : current_unit})

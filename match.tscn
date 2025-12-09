@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpn06gh4v5yn5" path="res://Scripts/match.gd" id="1_7y1jj"]
 [ext_resource type="Script" uid="uid://bulaedjjsj2rr" path="res://Scripts/hero_manager.gd" id="2_x8et2"]
-[ext_resource type="Script" uid="uid://cacpxtwwfc8dx" path="res://camera_holder.gd" id="3_crtjb"]
+[ext_resource type="Script" uid="uid://cacpxtwwfc8dx" path="res://Scripts/camera_holder.gd" id="3_crtjb"]
 [ext_resource type="AudioStream" uid="uid://boutak4msk0wo" path="res://Assets/Resources/brawl_commander_song_2.mp3" id="4_2n26j"]
 [ext_resource type="AudioStream" uid="uid://did3igtmxe2xs" path="res://Assets/Resources/brawl_commander_song_3.mp3" id="5_nm5tq"]
 

@@ -44,9 +44,9 @@ func pulse():
 	var valid_units = units_in_range.filter(is_instance_valid)
 
 	for unit in valid_units:
-		if unit.team != caster.team:
+		if unit.team != caster.team and can_hit_enemies:
 			on_enemy_hit(unit)
-		else:
+		elif unit.team == caster.team and can_hit_allies:
 			on_ally_hit(unit)
 
 

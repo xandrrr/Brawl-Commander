@@ -20,6 +20,11 @@ func add_unit_from_hero(hero : Hero):
 			unit_died.emit(new_unit)
 		)
 		
+		var collision_shape = new_unit.get_node("AttackRange").get_node("CollisionShape3D")
+		var duplicated_shape = collision_shape.shape.duplicate()
+		collision_shape.shape = duplicated_shape
+		collision_shape.shape.radius = new_unit.get_stat("config","attack_range")
+		
 		var ability_path = ABILITIES_PATH + hero.hero_name + ".gd"
 		
 		new_unit.get_node("AbilityCooldownTimer").wait_time = new_unit.stats.stats_dictionary["stats"]["ability_cooldown"]
