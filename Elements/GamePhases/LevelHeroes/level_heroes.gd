@@ -25,8 +25,8 @@ func run():
 				#to simulate enemies making a decision
 				for party in game_match.hero_manager.parties:
 					if party != player_party:
-						#var random_int = randi_range(0,3)
-						var random_hero = party.heroes[0] #change after testing
+						var random_int = randi_range(0,3)
+						var random_hero = party.heroes[random_int]
 						random_hero.level +=1
 				
 				phase_finished.emit()
