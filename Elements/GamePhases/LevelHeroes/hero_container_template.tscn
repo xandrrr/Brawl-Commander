@@ -36,39 +36,39 @@ layout_mode = 2
 [node name="attack_damage" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Attack Damage: "
 metadata/corresponding_stat = ""
 
 [node name="attack_speed" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Attack Speed : "
 metadata/corresponding_stat = ""
 
 [node name="max_health" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Max Health: "
 
 [node name="movement_speed" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Movement Speed: "
 
 [node name="ability_power" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Ability Power: "
 
 [node name="ability_cooldown" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Ability Cooldown: "
 
 [node name="GrowthVBox" type="VBoxContainer" parent="VBox/StatsHBox"]
@@ -78,7 +78,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "( + 0 )"
 horizontal_alignment = 2
 
@@ -86,7 +86,7 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "( + 0 )"
 horizontal_alignment = 2
 
@@ -94,7 +94,7 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "( + 0 )"
 horizontal_alignment = 2
 
@@ -102,7 +102,7 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "( + 0 )"
 horizontal_alignment = 2
 
@@ -110,7 +110,7 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "( + 0 )"
 horizontal_alignment = 2
 
@@ -118,7 +118,7 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "( + 0 )"
 horizontal_alignment = 2
 

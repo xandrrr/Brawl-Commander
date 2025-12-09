@@ -15,22 +15,23 @@ var game_phase_dictionary : Dictionary
 var match_over : bool = false
 
 var starting_team_names : Array = [
-	"Player",
-	"Enemy",
-	"Enemy2",
-	"Enemy3"
+	"You",
+	"Enemy 1",
+	"Enemy 2",
+	"Enemy 3"
 ]
 
 var selections : Dictionary = {
-	"Player" : ["Bard"],
-	"Enemy" : ["PlagueDoctor"],
-	"Enemy2" : ["Photographer"],
-	"Enemy3" : ["Banshee"]
+	"You" : ["Wizard"],
+	"Enemy 1" : ["Bunny"],
+	"Enemy 2" : ["Skeleton"],
+	"Enemy 3" : ["Werewolf"]
 }
 
-var test_game_phase_order : Dictionary = {
+var game_phase_order : Dictionary = {
 	1 : "LevelHeroes",
-	2 : "BattlePhase"
+	2 : "BattlePhase",
+	3 : "TeamStandings"
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -39,20 +40,19 @@ func _ready() -> void:
 	hero_manager.create_party_for_all_teams(teams)
 	
 	hero_manager.populate_new_hero_pool()
-	
-	for i in range(teams.size()):
-		for hero_name in selections[teams[i].team_name]:
-			var hero_selection = hero_manager.get_hero_by_name(hero_name)
-			hero_manager.move_hero_to_party(hero_selection, teams[i].party)
-	game_phase_dictionary = test_game_phase_order
-	play_next_game_phase()
-
+	game_phase_dictionary = game_phase_order
+	current_phase = load_game_phase("HeroSelect")
+	current_phase.run()
+	current_phase.phase_finished.connect(func():
+		current_phase.queue_free()
+		play_next_game_phase()
+	)
 
 func populate_teams_for_new_game():
 	for team in starting_team_names:
 		var new_team = load("res://Scripts/team.gd").new(team)
 		teams.append(new_team)
-		if team == "Player":
+		if team == "You":
 			player_team = new_team
 
 
@@ -77,9 +77,10 @@ func play_next_game_phase():
 	if current_phase_number > game_phase_dictionary.size():
 		current_phase_number = 1
 	
-	var next_game_phase = load_game_phase(game_phase_dictionary[current_phase_number])
-	next_game_phase.run()
-	next_game_phase.phase_finished.connect(func():
+	current_phase = load_game_phase(game_phase_dictionary[current_phase_number])
+	current_phase.run()
+	current_phase.phase_finished.connect(func():
+		current_phase.queue_free()
 		play_next_game_phase()
 	)
 
@@ -91,7 +92,7 @@ func clear_map():
 
 func check_for_winner():
 	for team in teams:
-		if team.points == 8:
+		if team.points == 2:
 			declare_winner(team)
 
 

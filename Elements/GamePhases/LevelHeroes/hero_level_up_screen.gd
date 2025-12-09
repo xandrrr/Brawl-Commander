@@ -1,5 +1,7 @@
 extends Control
 
+const ABILITIES_PATH = "res://Scripts/Abilities/"
+
 @export var selection : String
 @export var hero_templates : Dictionary = {}
 
@@ -65,10 +67,23 @@ func display_ability(hero_name : String):
 	#hide everything except ability description
 	$HeroesHBox.visible = false
 	$ConfirmButton.visible = false
-	$AbilityDescription.visible = true
-
-
-func _on_exit_button_pressed() -> void:
-	$HeroesHBox.visible = true
-	$ConfirmButton.visible = true
-	$AbilityDescription.visible = false
+	
+	var ability_description_panel = load("res://Elements/GamePhases/LevelHeroes/ability_description_panel.tscn")
+	var new_panel = ability_description_panel.instantiate()
+	add_child(new_panel)
+	
+	var ability_path = ABILITIES_PATH + hero_name + ".gd"
+	var v_box = new_panel.get_node("VBoxContainer")
+	
+	v_box.get_node("HeroName").text = hero_name
+	
+	if FileAccess.file_exists(ability_path):
+		var ability = load(ability_path).new()
+		v_box.get_node("AbilityName").text = ability.ability_name
+		v_box.get_node("AbilityDescription").text = ability.ability_description
+	
+	v_box.get_node("ExitButton").pressed.connect(func():
+		$HeroesHBox.visible = true
+		$ConfirmButton.visible = true
+		new_panel.queue_free()
+	)

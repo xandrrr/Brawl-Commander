@@ -1,0 +1,263 @@
+[gd_scene load_steps=2 format=3 uid="uid://86hrgj25yec0"]
+
+[ext_resource type="Script" uid="uid://nrwuqtmbw7ws" path="res://Elements/GamePhases/HeroSelect/hero_select_menu.gd" id="1_vt64n"]
+
+[node name="HeroSelect" type="Control" node_paths=PackedStringArray("item_list", "hero_information_hbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vt64n")
+item_list = NodePath("FullHeroProfileHBox/ItemList")
+hero_information_hbox = NodePath("FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(1, 1, 1, 0.501961)
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -315.0
+offset_right = 315.0
+offset_bottom = 141.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Hero Selection
+Choose your heroes!
+Click on a hero to view more information"
+horizontal_alignment = 1
+
+[node name="TeamGridDisplay" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -81.5
+offset_right = 150.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 1200
+theme_override_constants/v_separation = 400
+columns = 2
+
+[node name="FullHeroProfileHBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -520.0
+offset_top = -209.0
+offset_right = 520.0
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+
+[node name="ItemList" type="ItemList" parent="FullHeroProfileHBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="HeroProfileVBox" type="VBoxContainer" parent="FullHeroProfileHBox"]
+layout_mode = 2
+
+[node name="HeadersVBox" type="VBoxContainer" parent="FullHeroProfileHBox/HeroProfileVBox"]
+layout_mode = 2
+
+[node name="HeroName" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeadersVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Hero"
+horizontal_alignment = 1
+
+[node name="HeroInformationHBox" type="HBoxContainer" parent="FullHeroProfileHBox/HeroProfileVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="CurrentStatsHeadersVBox" type="VBoxContainer" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox"]
+layout_mode = 2
+
+[node name="attack_damage" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsHeadersVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Attack Damage: "
+metadata/corresponding_stat = ""
+
+[node name="attack_speed" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsHeadersVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Attack Speed : "
+metadata/corresponding_stat = ""
+
+[node name="max_health" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsHeadersVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Max Health: "
+
+[node name="movement_speed" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsHeadersVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Movement Speed: "
+
+[node name="ability_power" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsHeadersVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Ability Power: "
+
+[node name="ability_cooldown" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsHeadersVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Ability Cooldown: "
+
+[node name="CurrentStatsVBox" type="VBoxContainer" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox"]
+layout_mode = 2
+
+[node name="attack_damage" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+metadata/corresponding_stat = ""
+
+[node name="attack_speed" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+metadata/corresponding_stat = ""
+
+[node name="max_health" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="movement_speed" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="ability_power" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="ability_cooldown" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="GrowthVBox" type="VBoxContainer" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox"]
+layout_mode = 2
+
+[node name="attack_damage" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="attack_speed" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="max_health" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="movement_speed" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="ability_power" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="ability_cooldown" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AbilityInformationVBox" type="VBoxContainer" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="AbilityName" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/AbilityInformationVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Ability:"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/AbilityInformationVBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="AbilityDescription" type="Label" parent="FullHeroProfileHBox/HeroProfileVBox/HeroInformationHBox/AbilityInformationVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+text = "Ability:"
+horizontal_alignment = 1
+
+[node name="ConfirmSelection" type="Button" parent="FullHeroProfileHBox/HeroProfileVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Confirm Selection
+"
+
+[connection signal="item_selected" from="FullHeroProfileHBox/ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="pressed" from="FullHeroProfileHBox/HeroProfileVBox/ConfirmSelection" to="." method="_on_confirm_selection_pressed"]

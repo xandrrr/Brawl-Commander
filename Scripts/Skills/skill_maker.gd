@@ -10,7 +10,7 @@ func create_projectile(unit : Unit, ability : Ability):
 	
 	projectile_scene.caster = unit
 	projectile_scene.projectile_speed = ability.speed
-	projectile_scene.damage = ability.damage
+	projectile_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
 	projectile_scene.heal_amount = ability.heal_amount
 	projectile_scene.can_hit_enemies = ability.targets_enemies
 	projectile_scene.can_hit_allies = ability.targets_allies
@@ -46,7 +46,7 @@ func create_area_attack(unit : Unit, ability : Ability):
 	var area_scene = area.instantiate()
 	
 	area_scene.caster = unit
-	area_scene.damage = ability.damage
+	area_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
 	area_scene.heal_amount = ability.heal_amount
 	area_scene.tick_time = ability.tick_time
 	area_scene.duration = ability.duration
@@ -97,7 +97,7 @@ func create_dash(unit : Unit, ability : Ability):
 	var dash_scene = dash.instantiate()
 	
 	dash_scene.caster = unit
-	dash_scene.damage = ability.damage
+	dash_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
 	dash_scene.heal_amount = ability.heal_amount
 	dash_scene.duration = ability.duration
 	dash_scene.can_hit_enemies = ability.targets_enemies
@@ -125,7 +125,7 @@ func create_targetable(unit : Unit, ability : Ability):
 	var targetable_scene = targetable.instantiate()
 	
 	targetable_scene.caster = unit
-	targetable_scene.damage = ability.damage
+	targetable_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
 	targetable_scene.heal_amount = ability.heal_amount
 	targetable_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
 	targetable_scene.ally_status_afflictions = ability.ally_status_effect_afflictions
@@ -150,7 +150,7 @@ func create_exploding_projectile(unit : Unit, ability : Ability):
 	
 	exploding_projectile_scene.caster = unit
 	exploding_projectile_scene.projectile_speed = ability.speed
-	exploding_projectile_scene.damage = ability.damage
+	exploding_projectile_scene.damage = ability.damage + unit.get_stat("stats","ability_power")
 	exploding_projectile_scene.heal_amount = ability.heal_amount
 	exploding_projectile_scene.tick_time = ability.tick_time
 	exploding_projectile_scene.duration = ability.duration

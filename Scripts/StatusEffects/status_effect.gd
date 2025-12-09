@@ -77,6 +77,7 @@ func cleanse():
 		affected_unit.modify_stat("stats", stat, -modified_stats[stat])
 	
 	finished.emit()
+	affected_unit.status_effects.erase(status_name)
 	queue_free()
 
 

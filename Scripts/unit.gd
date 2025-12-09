@@ -28,6 +28,10 @@ func _ready() -> void:
 
 
 func can_attack():
+	for status in status_effects:
+		if !is_instance_valid(status_effects[status]):
+			status_effects.erase(status)
+	
 	if attack_on_cooldown:
 		return false
 	
@@ -42,6 +46,10 @@ func can_attack():
 
 
 func can_update_target():
+	for status in status_effects:
+		if !is_instance_valid(status_effects[status]):
+			status_effects.erase(status)
+	
 	if unit_is_defeated:
 		return false
 	
@@ -61,7 +69,7 @@ func add_status_effect(status_effect_name : String, inflictor : Unit):
 			if effect == status_effect_name:
 				status_effect_already_inflicted = true
 				status_effects[effect].add_stack()
-				break
+				return status_effects[effect]
 	
 	if !status_effect_already_inflicted:
 		#create the status effect
@@ -83,6 +91,7 @@ func add_status_effect(status_effect_name : String, inflictor : Unit):
 		
 		#activate status effect
 		status_effect_scene.activate()
+		return status_effect_scene
 
 
 func look_up_status_effect(status_effect_name : String):
@@ -296,6 +305,10 @@ func start_ability_cooldown(cast_time : float):
 
 
 func can_cast():
+	for status in status_effects:
+		if !is_instance_valid(status_effects[status]):
+			status_effects.erase(status)
+	
 	if ability_on_cooldown:
 		return false
 	

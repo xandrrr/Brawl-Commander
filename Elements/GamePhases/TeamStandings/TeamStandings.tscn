@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bexk4vgjy1vln"]
+
+[ext_resource type="Script" uid="uid://bpv6xu40mm1tt" path="res://Elements/GamePhases/TeamStandings/team_standings.gd" id="1_hlawh"]
+
+[node name="TeamStandings" type="Node3D"]
+script = ExtResource("1_hlawh")
+metadata/_custom_type_script = "uid://bjvqvsthoj7l8"

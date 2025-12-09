@@ -30,5 +30,4 @@ func run():
 						random_hero.level +=1
 				
 				phase_finished.emit()
-				queue_free()
 	)

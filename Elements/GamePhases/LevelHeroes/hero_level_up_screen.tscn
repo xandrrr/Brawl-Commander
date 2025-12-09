@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6ausb8jhyv3s"]
+[gd_scene load_steps=2 format=3 uid="uid://c6ausb8jhyv3s"]
 
 [ext_resource type="Script" uid="uid://7eormgm46fmk" path="res://Elements/GamePhases/LevelHeroes/hero_level_up_screen.gd" id="1_0k813"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0k813"]
-bg_color = Color(0.147672, 0.147672, 0.147672, 1)
 
 [node name="HeroLevelUpScreen" type="Control"]
 layout_mode = 3
@@ -55,7 +52,7 @@ offset_right = 42.5
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="ConfirmButton" type="Button" parent="."]
@@ -73,47 +70,3 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 48
 text = "Confirm and Head to Battle"
-
-[node name="AbilityDescription" type="PanelContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(1200, 400)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0k813")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="AbilityDescription"]
-layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
-
-[node name="HeroName" type="Label" parent="AbilityDescription/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 64
-text = "HeroName"
-horizontal_alignment = 1
-
-[node name="AbilityDescription" type="Label" parent="AbilityDescription/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.843184, 0.843184, 0.843184, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 48
-text = "AbilityDescription"
-horizontal_alignment = 1
-
-[node name="ExitButton" type="Button" parent="AbilityDescription/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Exit"
-
-[connection signal="pressed" from="AbilityDescription/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,11 +1,11 @@
 extends Ability
 
 func _init() -> void:
-	ability_name = "Mate in 3"
+	ability_name = "Checkmate"
 	ability_type = "dash"
 	targeting_type = "nearest_enemy"
 	damage = 50.0
-	enemy_status_effect_afflictions = ["Check"]
+	enemy_status_effect_afflictions = ["Stunned", "Vulnerable"]
 	targets_enemies = true
 	duration = 0.5
 	cast_time = 0.5

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://hnja1cqt6o7c"]
+
+[node name="TeamInformationPanel" type="PanelContainer"]
+
+[node name="TeamInformationVBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="TeamName" type="Label" parent="TeamInformationVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "TeamName"
+horizontal_alignment = 1
+
+[node name="HeroesHeader" type="Label" parent="TeamInformationVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "
+Heroes"
+horizontal_alignment = 1
+
+[node name="HeroSelectionsVBox" type="VBoxContainer" parent="TeamInformationVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8

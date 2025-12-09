@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxmuex3r05qnu"]
+
+[ext_resource type="Script" uid="uid://cntaeh772mx6x" path="res://Elements/GamePhases/HeroSelect/hero_select.gd" id="1_rx0ph"]
+
+[node name="HeroSelect" type="Node3D"]
+script = ExtResource("1_rx0ph")
+metadata/_custom_type_script = "uid://bjvqvsthoj7l8"

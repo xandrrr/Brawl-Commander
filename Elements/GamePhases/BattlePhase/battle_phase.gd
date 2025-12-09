@@ -15,5 +15,4 @@ func run():
 		var winning_team = game_match.get_team(winner.team_name)
 		winning_team.points += 1
 		phase_finished.emit()
-		queue_free()
 	)
