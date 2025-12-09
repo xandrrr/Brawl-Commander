@@ -2,6 +2,7 @@ extends StatusEffect
 
 func activate():
 	status_name = "Thorns"
+	duration = 5.0
 	max_stacks = 1
 	current_stacks = 1
 	refresh_on_stack_added = true

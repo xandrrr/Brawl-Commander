@@ -4,6 +4,7 @@ func activate():
 	status_name = "Disarmed"
 	max_stacks = 1
 	current_stacks = 1
+	duration = 5.0
 	refresh_on_stack_added = true
 	is_indefinite = false
 	blocks_attack = true

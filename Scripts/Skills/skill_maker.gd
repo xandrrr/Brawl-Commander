@@ -100,7 +100,13 @@ func create_dash(unit : Unit, ability : Ability):
 	var dash_scene = dash.instantiate()
 	
 	dash_scene.caster = unit
+	dash_scene.damage = ability.damage
+	dash_scene.heal_amount = ability.heal_amount
 	dash_scene.duration = ability.duration
+	dash_scene.can_hit_enemies = ability.targets_enemies
+	dash_scene.can_hit_allies = ability.targets_allies
+	dash_scene.enemy_status_afflictions = ability.enemy_status_effect_afflictions
+	dash_scene.ally_status_afflictions = ability.ally_status_effect_afflictions
 	
 	match ability.targeting_type:
 		"nearest_enemy":

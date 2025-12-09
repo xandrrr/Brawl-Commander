@@ -2,13 +2,12 @@ extends Ability
 
 func _init() -> void:
 	ability_name = "Bestow Sickness"
-	ability_type = "exploding_projectile"
+	ability_type = "projectile"
 	targeting_type = "nearest_enemy"
 	enemy_status_effect_afflictions = ["Poison"]
 	speed = 1.0
 	damage = 25.0
-	duration = 0.1
-	size = Vector3(4,1,4)
+	size = Vector3(.4,.4,.4)
 	cast_time = 0.5
 	targets_enemies = true
 	targets_allies = false

@@ -1,7 +1,7 @@
 extends Ability
 
 func _init() -> void:
-	ability_name = "Bon Appetit!"
+	ability_name = "Song of Healing"
 	ability_type = "area_attack"
 	ability_shape = "cylinder"
 	targeting_type = "self"

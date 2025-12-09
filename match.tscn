@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bplt8vrvhgmxd"]
+[gd_scene load_steps=8 format=3 uid="uid://bplt8vrvhgmxd"]
 
 [ext_resource type="Script" uid="uid://dpn06gh4v5yn5" path="res://Scripts/match.gd" id="1_7y1jj"]
 [ext_resource type="Script" uid="uid://bulaedjjsj2rr" path="res://Scripts/hero_manager.gd" id="2_x8et2"]
+[ext_resource type="Script" uid="uid://cacpxtwwfc8dx" path="res://camera_holder.gd" id="3_crtjb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8et2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crtjb"]
+size = Vector3(80, 80, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xkuxl"]
+size = Vector3(80, 1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2n26j"]
+size = Vector3(1, 80, 80)
 
 [node name="Match" type="Node3D" node_paths=PackedStringArray("hero_manager")]
 script = ExtResource("1_7y1jj")
@@ -12,8 +24,51 @@ hero_manager = NodePath("HeroManager")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.229302, 0.973355, 0, -0.973355, -0.229302, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 45, 0)
-
 [node name="HeroManager" type="Node" parent="."]
 script = ExtResource("2_x8et2")
+
+[node name="CameraHolder" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
+script = ExtResource("3_crtjb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraHolder"]
+shape = SubResource("BoxShape3D_x8et2")
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("BoxShape3D_crtjb")
+
+[node name="Wall5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall5"]
+shape = SubResource("BoxShape3D_xkuxl")
+
+[node name="Wall6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall6"]
+shape = SubResource("BoxShape3D_xkuxl")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+shape = SubResource("BoxShape3D_crtjb")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+shape = SubResource("BoxShape3D_2n26j")
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+shape = SubResource("BoxShape3D_2n26j")

@@ -5,7 +5,7 @@ func activate():
 	max_stacks = 1
 	current_stacks = 1
 	refresh_on_stack_added = true
-	duration = 6
+	duration = 6.0
 	is_indefinite = false
 	blocks_attack = false
 	blocks_cast = false

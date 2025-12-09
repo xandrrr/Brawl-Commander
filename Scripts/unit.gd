@@ -124,6 +124,11 @@ func modify_stat(stat_category : String, stat_name : String, amount : float):
 	stats.stats_dictionary[stat_category][stat_name] += amount
 
 
+func adjust_stats_to_level(level : int):
+	for stat in stats.stats_dictionary["stats"]:
+		var modification_value = get_stat("growth", stat) * level
+		modify_stat("stats", stat, modification_value)
+
 #functions to heal and take damage
 func heal(amount : float):
 	var can_heal : bool = true
@@ -143,10 +148,22 @@ func heal(amount : float):
 func take_damage(amount : float, attacker : Unit):
 	if !unit_is_defeated:
 		current_health -= amount
+		print(unit_name, " has taken ", amount, " damage from ", attacker.unit_name)
 		$FeedbackAnimationPlayer.play("hurt")
 		
 		for effect in status_effects:
 			status_effects[effect].on_unit_damaged(amount, attacker)
+		
+		if current_health <= 0.0:
+			defeated.emit(attacker)
+		update_health_bar()
+
+
+func take_damage_without_effects(amount : float, attacker : Unit):
+	if !unit_is_defeated:
+		current_health -= amount
+		print(unit_name, " has taken ", amount, " damage from ", attacker.unit_name)
+		$FeedbackAnimationPlayer.play("hurt")
 		
 		if current_health <= 0.0:
 			defeated.emit(attacker)
@@ -203,7 +220,7 @@ func get_random_enemy_unit():
 	var battle = get_tree().get_first_node_in_group("Battle")
 	var units_in_battle = battle.active_units_in_battle
 	while (!enemy_unit):
-		var random_int = randi_range(0,units_in_battle.size())
+		var random_int = randi_range(0,(units_in_battle.size() - 1))
 		var random_unit = units_in_battle[random_int]
 		if random_unit.team != team:
 			enemy_unit = random_unit
@@ -221,6 +238,9 @@ func get_closest_ally_unit():
 				if (distance < closest_target_distance) or (closest_target == null):
 					closest_target = unit
 					closest_target_distance = distance
+	
+	if closest_target == null:
+		closest_target = self
 	
 	return closest_target
 

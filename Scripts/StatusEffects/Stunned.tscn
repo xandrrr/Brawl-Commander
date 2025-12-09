@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dca8cvcqa7r70"]
 
-[ext_resource type="Script" uid="uid://dyay8iwsr7oh0" path="res://Scripts/StatusEffects/stun.gd" id="1_afupl"]
+[ext_resource type="Script" uid="uid://dyay8iwsr7oh0" path="res://Scripts/StatusEffects/stunned.gd" id="1_afupl"]
 
 [node name="Stunned" type="Node3D"]
 script = ExtResource("1_afupl")

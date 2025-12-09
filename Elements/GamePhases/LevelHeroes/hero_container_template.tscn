@@ -1,0 +1,135 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyebev1a2uclm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbk8o"]
+bg_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="HeroContainerTemplate" type="PanelContainer"]
+custom_minimum_size = Vector2(415, 465)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bbk8o")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeroName" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+text = "HeroName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentLevel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Level 0"
+horizontal_alignment = 1
+
+[node name="StatsHBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="CurrentStatsVBox" type="VBoxContainer" parent="VBox/StatsHBox"]
+layout_mode = 2
+
+[node name="attack_damage" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Attack Damage: "
+metadata/corresponding_stat = ""
+
+[node name="attack_speed" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Attack Speed : "
+metadata/corresponding_stat = ""
+
+[node name="max_health" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Max Health: "
+
+[node name="movement_speed" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Movement Speed: "
+
+[node name="ability_power" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Ability Power: "
+
+[node name="ability_cooldown" type="Label" parent="VBox/StatsHBox/CurrentStatsVBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Ability Cooldown: "
+
+[node name="GrowthVBox" type="VBoxContainer" parent="VBox/StatsHBox"]
+layout_mode = 2
+
+[node name="attack_cooldown" type="Label" parent="VBox/StatsHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="attack_speed" type="Label" parent="VBox/StatsHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="max_health" type="Label" parent="VBox/StatsHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="movement_speed" type="Label" parent="VBox/StatsHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="ability_power" type="Label" parent="VBox/StatsHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="ability_cooldown" type="Label" parent="VBox/StatsHBox/GrowthVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "( + 0 )"
+horizontal_alignment = 2
+
+[node name="SelectButton" type="Button" parent="VBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Select"
+
+[node name="ViewAbilityButton" type="Button" parent="VBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "View Ability"

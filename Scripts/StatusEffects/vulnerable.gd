@@ -13,4 +13,4 @@ func activate():
 
 func on_unit_damaged(damage : float, attacker : Unit):
 	var extra_damage = damage * .1 * current_stacks
-	affected_unit.take_damage(extra_damage, inflictor)
+	affected_unit.take_damage_without_effects(extra_damage, inflictor)

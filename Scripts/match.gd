@@ -22,14 +22,14 @@ var test_teams : Array = [
 ]
 
 var test_selections : Dictionary = {
-	"Player" : ["TestUnit1", "TestUnit2"],
-	"Enemy" : ["TestUnit3", "TestUnit4"],
-	"Enemy2" : ["TestUnit5", "TestUnit6"],
-	"Enemy3" : ["TestUnit7", "TestUnit8"]
+	"Player" : ["TestUnit5"],
+	"Enemy" : ["TestUnit6"],
+	"Enemy2" : ["TestUnit3"],
+	"Enemy3" : ["TestUnit8"]
 }
 
 var test_game_phase_order : Dictionary = {
-	1 : "TestBattle"
+	1 : "BattlePhase"
 }
 
 # Called when the node enters the scene tree for the first time.

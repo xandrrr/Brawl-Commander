@@ -28,19 +28,16 @@ func dash():
 		
 		current_tween = create_tween()
 		current_tween.tween_property(caster, "global_position", destination, duration)
+		
+		current_tween.finished.connect(func():
+			if target.team != caster.team:
+				on_enemy_hit(target)
+			else:
+				on_ally_hit(target)
+			queue_free()
+		)
 	else:
 		on_ally_hit(caster)
-
-
-func _process(delta: float) -> void:
-	if !current_tween.is_running():
-		if target.team != caster.team:
-			on_enemy_hit(target)
-		else:
-			on_ally_hit(target)
-		
-		current_tween.kill()
-		queue_free()
 
 
 func on_enemy_hit(enemy : Unit):

@@ -6,7 +6,7 @@ func _init() -> void:
 	damage = 50.0
 	speed = 5.0
 	cast_time = 0.25
-	enemy_status_effect_afflictions = ["Feared"]
+	enemy_status_effect_afflictions = ["Silenced"]
 	targets_enemies = true
 	targets_allies = false
 	size = Vector3(.5,.5,.5)

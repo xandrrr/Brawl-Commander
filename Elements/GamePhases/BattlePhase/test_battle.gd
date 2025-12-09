@@ -6,7 +6,7 @@ func run():
 	game_match.populate_teams_for_new_game()
 	hero_manager.create_party_for_all_teams(game_match.teams)
 	
-	var new_battle = load("res://Elements/GamePhases/TestBattle/battle.tscn")
+	var new_battle = load("res://Elements/GamePhases/BattlePhase/battle.tscn")
 	var new_battle_node = new_battle.instantiate()
 	add_child(new_battle_node)
 	
