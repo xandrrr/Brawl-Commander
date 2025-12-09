@@ -8,4 +8,5 @@ func _init() -> void:
 	ally_status_effect_afflictions = ["Lifesteal"]
 	duration = 2.5
 	cast_time = 2.5
+	targets_allies = true
 	global = true

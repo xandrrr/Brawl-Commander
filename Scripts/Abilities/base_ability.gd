@@ -19,3 +19,4 @@ class_name Ability extends Resource
 @export var material_information : Dictionary
 @export var targeting_type = "nearest_enemy"
 @export var global : bool = false
+@export var ability_description : String = "This is a placeholder ability description."

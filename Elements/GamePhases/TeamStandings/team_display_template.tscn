@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dju5erg4hpc0j"]
+
+[node name="TeamDisplayTemplate" type="PanelContainer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TeamName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "TeamName"
+horizontal_alignment = 1
+
+[node name="TeamPoints" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Points: -1"
+horizontal_alignment = 1
+
+[node name="HeroHeader" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Heroes"
+horizontal_alignment = 1
+
+[node name="HeroListHBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1

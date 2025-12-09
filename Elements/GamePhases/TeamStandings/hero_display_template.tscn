@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bxejb7yca0rk1"]
+
+[node name="HeroVBox" type="VBoxContainer"]
+
+[node name="HeroName" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "DefaultUnit"
+horizontal_alignment = 1
+
+[node name="HeroLevel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Level -1"
+horizontal_alignment = 1
+
+[node name="ViewHeroButton" type="Button" parent="."]
+layout_mode = 2
+text = "View Hero Profile"

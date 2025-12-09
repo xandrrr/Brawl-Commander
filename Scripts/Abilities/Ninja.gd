@@ -5,7 +5,7 @@ func _init() -> void:
 	ability_type = "dash"
 	targeting_type = "random_enemy"
 	damage = 30.0
-	enemy_status_effect_afflictions = ["Disarm"]
+	enemy_status_effect_afflictions = ["Disarmed"]
 	duration = 0.1
 	cast_time = 0.1
 	targets_enemies = true

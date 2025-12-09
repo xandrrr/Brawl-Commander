@@ -62,23 +62,20 @@ func create_area_attack(unit : Unit, ability : Ability):
 	match ability.ability_shape:
 		"cylinder":
 			collision_shape.shape = CylinderShape3D.new()
+			area_scene.add_child(collision_shape)
 			collision_shape.shape.radius = ability.size.x
 			collision_shape.shape.height = 1.0
-			area_scene.add_child(collision_shape)
 			
 			mesh_instance.mesh = CylinderMesh.new()
+			area_scene.add_child(mesh_instance)
 			mesh_instance.mesh.top_radius = ability.size.x
 			mesh_instance.mesh.bottom_radius = ability.size.x
-			mesh_instance.mesh.height = 0.5
-			area_scene.add_child(mesh_instance)
-		"box":
-			collision_shape.shape = BoxShape3D.new()
-			collision_shape.shape.size = ability.size
-			area_scene.add_child(collision_shape)
 			
-			mesh_instance.mesh = BoxMesh.new()
-			mesh_instance.mesh.size = ability.size
-			area_scene.add_child(mesh_instance)
+			var color = Color(.8,.8,.8,.35)
+			var transparent_material = StandardMaterial3D.new()
+			transparent_material.albedo_color = color
+			transparent_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			mesh_instance.material_override = transparent_material
 	
 	#set the target for the area
 	match ability.targeting_type:

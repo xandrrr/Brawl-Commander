@@ -6,7 +6,7 @@ var status_dictionary : Dictionary = {
 	"Charted" : "res://Scripts/StatusEffects/Charted.tscn",
 	"Check" : "res://Scripts/StatusEffects/Check.tscn",
 	"Disarmed" : "res://Scripts/StatusEffects/Disarmed.tscn",
-	"Fear" : "res://Scripts/StatusEffects/Fear.tscn",
+	"Duality" : "res://Scripts/StatusEffects/Duality.tscn",
 	"Lifesteal" : "res://Scripts/StatusEffects/Lifesteal.tscn",
 	"Overclocked" : "res://Scripts/StatusEffects/Overclocked.tscn",
 	"Poison" : "res://Scripts/StatusEffects/Poison.tscn",
