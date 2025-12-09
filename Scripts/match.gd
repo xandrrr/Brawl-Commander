@@ -92,7 +92,7 @@ func clear_map():
 
 func check_for_winner():
 	for team in teams:
-		if team.points == 2:
+		if team.points == 4:
 			declare_winner(team)
 
 
