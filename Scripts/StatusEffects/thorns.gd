@@ -13,4 +13,4 @@ func activate():
 
 func on_unit_damaged(damage : float, attacker : Unit):
 	var reflect_damage = damage * .15
-	inflictor.take_damage(reflect_damage, affected_unit)
+	attacker.take_damage(reflect_damage, affected_unit)

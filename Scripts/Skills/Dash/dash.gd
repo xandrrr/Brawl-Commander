@@ -13,6 +13,7 @@ var can_hit_enemies : bool
 var enemy_status_afflictions : Array = []
 var can_hit_allies : bool
 var ally_status_afflictions : Array = []
+var self_status_afflictions : Array = []
 
 var collision_shape : CollisionShape3D
 
@@ -29,11 +30,16 @@ func dash():
 		current_tween = create_tween()
 		current_tween.tween_property(caster, "global_position", destination, duration)
 		
+		#do damage/healing/status effects on completion of tween
 		current_tween.finished.connect(func():
 			if target.team != caster.team:
 				on_enemy_hit(target)
 			else:
 				on_ally_hit(target)
+				
+			for status_effect in self_status_afflictions:
+				caster.add_status_effect(status_effect, caster)
+				
 			queue_free()
 		)
 	else:

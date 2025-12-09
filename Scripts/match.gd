@@ -22,10 +22,10 @@ var starting_team_names : Array = [
 ]
 
 var selections : Dictionary = {
-	"Player" : ["TestUnit5"],
-	"Enemy" : ["TestUnit6"],
-	"Enemy2" : ["TestUnit3"],
-	"Enemy3" : ["TestUnit8"]
+	"Player" : ["Piñata"],
+	"Enemy" : ["Cowboy"],
+	"Enemy2" : ["Skeleton"],
+	"Enemy3" : ["Cupid"]
 }
 
 var test_game_phase_order : Dictionary = {

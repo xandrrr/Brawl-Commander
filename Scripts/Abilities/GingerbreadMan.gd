@@ -8,4 +8,5 @@ func _init() -> void:
 	enemy_status_effect_afflictions = ["Stunned", "Silenced"]
 	duration = 1.0
 	cast_time = 0.1
+	targets_enemies = true
 	global = true

@@ -5,6 +5,7 @@ func _init() -> void:
 	ability_type = "dash"
 	targeting_type = "nearest_ally"
 	self_status_effect_afflictions = ["Lifesteal"]
+	targets_allies = true
 	duration = 0.25
 	cast_time = 0.25
 	global = true

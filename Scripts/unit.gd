@@ -18,7 +18,6 @@ var unit_is_defeated : bool = false
 @export var status_effect_display_container : VBoxContainer
 
 signal activated
-signal feared
 signal enemy_in_attack_range
 signal ability_cast_started
 signal ability_cast_finished
@@ -178,8 +177,8 @@ func activate():
 
 #functions to update target
 func update_target(unit : Unit):
-	if can_update_target():
 		current_target = unit
+		print(unit_name, " is updating target to ", unit.unit_name)
 
 
 func update_target_to_closest_enemy():

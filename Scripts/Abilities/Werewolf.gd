@@ -8,4 +8,5 @@ func _init() -> void:
 	enemy_status_effect_afflictions = ["Bleed"]
 	duration = 0.5
 	cast_time = 0.5
+	targets_enemies = true
 	global = true

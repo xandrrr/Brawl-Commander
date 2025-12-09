@@ -6,6 +6,7 @@ func _init() -> void:
 	targeting_type = "nearest_enemy"
 	damage = 50.0
 	enemy_status_effect_afflictions = ["Check"]
+	targets_enemies = true
 	duration = 0.5
 	cast_time = 0.5
 	global = true

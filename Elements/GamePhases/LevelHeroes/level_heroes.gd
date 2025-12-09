@@ -24,9 +24,6 @@ func run():
 				#level up all teams' heroes and add an extra level to a random hero for each enemy team
 				#to simulate enemies making a decision
 				for party in game_match.hero_manager.parties:
-					for hero in party.heroes:
-						hero.level +=1
-					
 					if party != player_party:
 						#var random_int = randi_range(0,3)
 						var random_hero = party.heroes[0] #change after testing
