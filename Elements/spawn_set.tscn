@@ -7,6 +7,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_4c6ia"]
 
 [node name="SpawnSet" type="Node3D"]
+visible = false
 script = ExtResource("1_4c6ia")
 
 [node name="Spawn0" type="Area3D" parent="."]
