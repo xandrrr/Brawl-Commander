@@ -2,7 +2,6 @@ class_name UnitManager extends Node3D
 
 const BASE_UNIT = preload("res://Elements/unit.tscn")
 const HERO_DATABASE = preload("res://Assets/Resources/hero_stat_database.tres")
-const ABILITIES_PATH = "res://Scripts/Abilities/"
 
 signal unit_added(unit : Unit)
 signal unit_died(unit : Unit)
@@ -25,15 +24,10 @@ func add_unit_from_hero(hero : Hero):
 		collision_shape.shape = duplicated_shape
 		collision_shape.shape.radius = new_unit.get_stat("config","attack_range")
 		
-		var ability_path = ABILITIES_PATH + hero.hero_name + ".gd"
+		new_unit.ability = AbilityLookup.get_ability(hero.hero_name).new()
 		
 		new_unit.get_node("AbilityCooldownTimer").wait_time = new_unit.stats.stats_dictionary["stats"]["ability_cooldown"]
 		
-		if FileAccess.file_exists(ability_path):
-			new_unit.ability = load(ability_path).new()
-		else:
-			new_unit.ability = load(ABILITIES_PATH + "base_ability.gd").new()
-
 		unit_added.emit(new_unit)
 		return new_unit
 

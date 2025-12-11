@@ -149,6 +149,7 @@ func heal(amount : float):
 	if can_heal:
 		current_health += amount
 		$FeedbackAnimationPlayer.play("heal")
+		$HealSound.play()
 		current_health = min(current_health, get_stat("stats","max_health"))
 		update_health_bar()
 
@@ -158,6 +159,7 @@ func take_damage(amount : float, attacker : Unit):
 		current_health -= amount
 		print(unit_name, " has taken ", amount, " damage from ", attacker.unit_name)
 		$FeedbackAnimationPlayer.play("hurt")
+		$HurtSound.play()
 		
 		for effect in status_effects:
 			status_effects[effect].on_unit_damaged(amount, attacker)

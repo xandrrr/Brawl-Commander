@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="project3 oct112025"
+config/name="Brawl Commander"
 run/main_scene="uid://dewuo5gheui1f"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SkillMaker="*res://Scripts/Skills/skill_maker.gd"
 StatusEffectLookup="*res://Scripts/status_effect_lookup.gd"
+AbilityLookup="*res://Scripts/ability_lookup.gd"
 
 [display]
 

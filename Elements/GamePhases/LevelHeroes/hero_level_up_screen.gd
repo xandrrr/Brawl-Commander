@@ -1,7 +1,5 @@
 extends Control
 
-const ABILITIES_PATH = "res://Scripts/Abilities/"
-
 @export var selection : String
 @export var hero_templates : Dictionary = {}
 
@@ -70,15 +68,13 @@ func display_ability(hero_name : String):
 	var new_panel = ability_description_panel.instantiate()
 	add_child(new_panel)
 	
-	var ability_path = ABILITIES_PATH + hero_name + ".gd"
 	var v_box = new_panel.get_node("VBoxContainer")
 	
 	v_box.get_node("HeroName").text = hero_name
 	
-	if FileAccess.file_exists(ability_path):
-		var ability = load(ability_path).new()
-		v_box.get_node("AbilityName").text = ability.ability_name
-		v_box.get_node("AbilityDescription").text = ability.ability_description
+	var ability = AbilityLookup.get_ability(hero_name).new()
+	v_box.get_node("AbilityName").text = ability.ability_name
+	v_box.get_node("AbilityDescription").text = ability.ability_description
 	
 	v_box.get_node("ExitButton").pressed.connect(func():
 		$HeroesHBox.visible = true

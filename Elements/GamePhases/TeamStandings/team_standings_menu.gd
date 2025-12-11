@@ -1,7 +1,5 @@
 extends Control
 
-const ABILITIES_PATH = "res://Scripts/Abilities/"
-
 @export var hero_profile_panel : Control
 
 func populate_team_grid(teams : Array):
@@ -68,12 +66,9 @@ func display_hero_profile_panel(hero : Hero):
 	#set ability information
 	var ability_information = hero_information.get_node("AbilityInformationVBox")
 	
-	var ability_path = ABILITIES_PATH + hero.hero_name + ".gd"
-		
-	if FileAccess.file_exists(ability_path):
-		var ability = load(ability_path).new()
-		ability_information.get_node("AbilityName").text = ability.ability_name
-		ability_information.get_node("AbilityDescription").text = ability.ability_description
+	var ability = AbilityLookup.get_ability(hero.hero_name).new()
+	ability_information.get_node("AbilityName").text = ability.ability_name
+	ability_information.get_node("AbilityDescription").text = ability.ability_description
 	
 	#delete panel on exit button click and make other UI elements visible again
 	v_box.get_node("ExitHeroDisplayButton").pressed.connect(func():

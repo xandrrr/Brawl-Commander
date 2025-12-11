@@ -1,7 +1,5 @@
 extends Control
 
-const ABILITIES_PATH = "res://Scripts/Abilities/"
-
 @export var parties = {}
 @export var team_panels = {}
 @export var all_heroes = {}
@@ -62,13 +60,10 @@ func update_hero_information(hero_name : String, disable_select_button : bool):
 	
 	#set ability information
 	var ability_information = hero_information.get_node("AbilityInformationVBox")
-	
-	var ability_path = ABILITIES_PATH + hero.hero_name + ".gd"
 		
-	if FileAccess.file_exists(ability_path):
-		var ability = load(ability_path).new()
-		ability_information.get_node("AbilityName").text = ability.ability_name
-		ability_information.get_node("AbilityDescription").text = ability.ability_description
+	var ability = AbilityLookup.get_ability(hero.hero_name).new()
+	ability_information.get_node("AbilityName").text = ability.ability_name
+	ability_information.get_node("AbilityDescription").text = ability.ability_description
 
 
 func add_hero_to_party(hero_name : String, party_name : String):

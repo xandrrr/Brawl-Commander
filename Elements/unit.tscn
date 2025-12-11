@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://36byg3ku1ihf"]
+[gd_scene load_steps=29 format=3 uid="uid://36byg3ku1ihf"]
 
 [ext_resource type="Script" uid="uid://b4ilmbrnxfwsi" path="res://Scripts/unit.gd" id="1_qqoi8"]
 [ext_resource type="Script" uid="uid://b5t8tmlyx3gp" path="res://Scripts/States/unit_state_manager.gd" id="2_l1y6i"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://d2m86il1bbdjj" path="res://Scripts/States/cooldown.gd" id="7_7v1se"]
 [ext_resource type="Script" uid="uid://4qcmss3d4hxy" path="res://Scripts/States/casting.gd" id="8_ypjf7"]
 [ext_resource type="Script" uid="uid://b4novpmsi0558" path="res://Scripts/ability_handler.gd" id="9_ypjf7"]
+[ext_resource type="AudioStream" uid="uid://sxdq6ou1jim6" path="res://Assets/Resources/hitHurt.wav" id="10_bdvhc"]
+[ext_resource type="AudioStream" uid="uid://c1coe2pimtso3" path="res://Assets/Resources/heal.wav" id="11_xei10"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ovyg8"]
 
@@ -324,6 +326,12 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_nf7y1")
 }
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_bdvhc")
+
+[node name="HealSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_xei10")
 
 [connection signal="ability_cast_finished" from="." to="StateManager" method="_on_unit_ability_cast_finished"]
 [connection signal="ability_cast_started" from="." to="StateManager" method="_on_unit_ability_cast_started"]
